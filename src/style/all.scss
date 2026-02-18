@@ -1,0 +1,15 @@
+// 1. 引入 Bootstrap 必要函式
+@import "bootstrap/scss/functions";
+
+// 2. 引入自定義的變數
+@import "./variables";
+
+// 3. 引入 Bootstrap 剩餘的核心檔案
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+
+@import "bootstrap/scss/bootstrap";
+
+@import "./typography";
