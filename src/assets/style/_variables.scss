@@ -358,6 +358,7 @@ $success: #2e8b68 !default; // Success 500 (綠)
 $info: #3f5ed6 !default; // Info 500 (藍)
 $warning: #c9972b !default; // Warning 500 (黃)
 $danger: #b73232 !default; // Error 500 (紅)
+
 // $primary: $blue !default;
 // $secondary: $gray-600 !default;
 // $success: $green !default;
@@ -379,6 +380,11 @@ $theme-colors: (
   "danger": $danger,
   "light": $light,
   "dark": $dark,
+  "taupe-200": $taupe-200,
+  "taupe-300": $taupe-300,
+  "blue-300": $blue-300,
+  "blue-400": $blue-400,
+  "gray-800": $gray-800,
 ) !default;
 // scss-docs-end theme-colors-map
 
@@ -492,8 +498,8 @@ $spacers: (
   // 40px
   48: 3rem,
   // 48px
-  56: 3.5rem,
-  // 56px
+  52: 3.25rem,
+  // 52px
   64: 4rem,
   // 64px
   80: 5rem,

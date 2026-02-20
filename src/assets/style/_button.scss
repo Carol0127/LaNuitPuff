@@ -1,0 +1,86 @@
+/* --- 基礎 --- */
+.btn-puff {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  text-decoration: none;
+  letter-spacing: 1px;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 0;
+}
+
+/* --- 顏色零件  --- */
+
+// Primary: 深藍底白字
+.btn-puff-primary {
+  background-color: $primary;
+  color: $taupe-100;
+  &:hover {
+    background-color: $secondary;
+    color: $taupe-100;
+  }
+}
+
+// Outline: 線條
+.btn-puff-outline {
+  border-color: $primary;
+  color: $primary;
+  background-color: transparent;
+  &:hover {
+    border-color: $secondary;
+    background-color: $secondary;
+    color: $taupe-100;
+  }
+}
+
+// White: 淺色底深藍字
+.btn-puff-white {
+  background-color: $taupe-100;
+  color: $primary;
+  &:hover {
+    background-color: $secondary;
+    color: $taupe-100;
+  }
+}
+
+// Yellow: 金色底白字
+.btn-puff-yellow {
+  background-color: $secondary;
+  color: $taupe-100;
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+// Disabled 狀態
+.btn-puff-disabled {
+  background-color: $blue-300 !important;
+  color: #fff !important;
+  border-color: transparent !important;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* --- 尺寸零件 --- */
+.btn-puff-cn-s {
+  padding: 8px 16px;
+}
+.btn-puff-cn-m {
+  padding: 12px 20px;
+}
+.btn-puff-cn-l {
+  padding: 16px 24px;
+}
+
+.btn-puff-eng-s {
+  padding: 8px 20px;
+}
+.btn-puff-eng-m {
+  padding: 8px 24px;
+}
+.btn-puff-eng-l {
+  padding: 16px 40px;
+}
