@@ -1,0 +1,44 @@
+.HeroSwiper {
+  width: 100%;
+  height: 100vh;
+
+  .swiper-slide {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .swiper-pagination {
+    left: auto !important;
+    right: 32px !important;
+    bottom: 32px !important;
+    width: auto !important;
+    transform: none !important;
+    display: flex;
+
+    @media (max-width: 768px) {
+      right: 50% !important;
+      transform: translateX(50%) !important;
+      bottom: 20px !important;
+    }
+  }
+
+  .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: $taupe-300 !important;
+    opacity: 0.5;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+
+    &-active {
+      opacity: 1;
+      background: $taupe-600;
+      width: 32px;
+      border-radius: 5px;
+    }
+  }
+}

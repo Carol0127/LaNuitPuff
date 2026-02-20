@@ -1,0 +1,66 @@
+.product-card {
+  img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    @media (max-width: 576px) {
+      height: 200px;
+    }
+  }
+  .position-relative {
+    &:hover {
+      .btn-addToCart {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  .btn-addToCart {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+
+    border: none;
+    background-color: $primary;
+    color: $taupe-200;
+    padding: 12px 0;
+    font-family: $font-eng-serif !important;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 375px) {
+      font-size: 14px;
+      padding: 8px 0;
+    }
+  }
+}
+.section-popular {
+  position: relative;
+  padding-bottom: 80px; // 留出底部空間
+
+  // 建立橫跨全螢幕的深藍色背景帶
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%; // 調整高度，使其剛好對齊卡片文字區塊的位置
+    background-color: $primary; // 使用你的深藍色變數
+    z-index: -1; // 確保在內容後方
+  }
+
+  h2 {
+    position: relative;
+    z-index: 1;
+  }
+}

@@ -1,3 +1,7 @@
+.icon-fill {
+  font-variation-settings: "FILL" 1 !important;
+}
+
 // 字體重量對照表
 $fw-bold: 700;
 $fw-semibold: 600;
@@ -29,10 +33,12 @@ $fw-regular: 400;
   }
 }
 
-.cn-heading {
-  font-family: $font-noto-serif;
+[class*="cn-heading-"] {
+  font-family: $font-noto-serif !important;
   line-height: 1.5;
+}
 
+.cn-heading {
   &-h1 {
     font-size: 36px;
     font-weight: $fw-bold;
@@ -165,6 +171,12 @@ $fw-regular: 400;
 }
 
 // --- Heading (標準標題) ---
+[class*="eng-heading-"],
+[class*="eng-display-"],
+[class*="eng-label-"] {
+  font-family: $font-eng-serif !important;
+}
+
 .eng-heading {
   font-family: $font-eng-serif !important;
   line-height: 1.3;

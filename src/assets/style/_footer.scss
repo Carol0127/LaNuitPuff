@@ -1,0 +1,7 @@
+.subscription-input {
+  color: white !important;
+  &::placeholder {
+    color: white !important;
+    opacity: 1;
+  }
+}
