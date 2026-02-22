@@ -1,39 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import CartStep from "../../components/CartStep";
 import CartTable from "../../components/CartTable";
-import { getCart } from "../../services/cart";
 import PopularCardSwiper from "../../components/PopularCardSwiper";
 import { NavLink } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCartAsync } from "../../store/slices/cartSlice";
 
 function Cart() {
-  const [cartData, setCartData] = useState([]);
+  const dispatch = useDispatch();
 
-  const getCartData = async () => {
-    const res = await getCart();
-    if (res.success) {
-      setCartData(res.data.carts);
-    }
-  };
+  const { cartData, final_total } = useSelector((state) => state.cart);
 
   useEffect(() => {
-    getCartData();
-  }, []);
+    dispatch(fetchCartAsync());
+  }, [dispatch]);
 
-  // --- 1. 計算邏輯定義區 ---
+  // --- 計算邏輯 ---
   const SHIPPING_THRESHOLD = 500;
   const SHIPPING_FEE = 60;
 
-  // 小計 (產品金額)
-  const subtotal = cartData.reduce((prev, item) => prev + item.final_total, 0);
-
-  // 運費判斷
+  const subtotal = final_total;
   const isFreeShipping = subtotal >= SHIPPING_THRESHOLD;
   const shippingCharge = cartData.length > 0 && !isFreeShipping ? SHIPPING_FEE : 0;
-
-  // 距離免運差額
   const amountToFree = SHIPPING_THRESHOLD - subtotal;
-
-  // 最終合計
   const totalAmount = subtotal + shippingCharge;
   return (
     <>
@@ -44,7 +33,7 @@ function Cart() {
               <h1 className="eng-display-xl text-primary mb-32">/ Your Cart</h1>
               <CartStep step={1} />
               <CartTable
-                getCartData={getCartData}
+                getCartData={() => dispatch(fetchCartAsync())}
                 cartData={cartData}
               />
               <div className="mb-32 d-lg-flex justify-content-between align-items-center">

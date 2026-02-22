@@ -13,6 +13,7 @@ export const getPopularProducts = async () => {
   }
 };
 
+// 取得商品
 export const getProducts = async (page = 1, category = "") => {
   try {
     const res = await api.get(`/api/${VITE_API_PATH}/products`, {
@@ -28,7 +29,7 @@ export const getProducts = async (page = 1, category = "") => {
 export const getProductById = async (id) => {
   try {
     const res = await api.get(`/api/${VITE_API_PATH}/product/${id}`);
-    return res.data.product; // 回傳單一商品物件
+    return res.data.product;
   } catch (error) {
     console.log("取得單一商品失敗", error);
   }

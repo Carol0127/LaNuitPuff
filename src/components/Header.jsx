@@ -1,11 +1,14 @@
 import { NavLink, useLocation, useNavigate } from "react-router";
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchCartAsync } from "../store/slices/cartSlice";
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const isInnerPage = pathname !== "/";
 
@@ -44,6 +47,13 @@ function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
+  const { cartData } = useSelector((state) => state.cart);
+  const cartCount = cartData?.length || 0;
+
+  useEffect(() => {
+    dispatch(fetchCartAsync());
+  }, [dispatch]);
+
   return (
     <>
       <nav
@@ -76,10 +86,15 @@ function Header() {
               </li>
               <li>
                 <NavLink
-                  className="nav-link me-20 me-lg-0"
+                  className="nav-link me-20 me-lg-0 position-relative"
                   to="/cart"
                 >
                   <span className="material-symbols-outlined">shopping_cart</span>
+                  {cartCount > 0 && (
+                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill text-primary bg-blue-300">
+                      {cartCount}
+                    </span>
+                  )}
                 </NavLink>
               </li>
             </ul>
