@@ -1,0 +1,82 @@
+.productHero {
+  background-image: url(https://github.com/Carol0127/LaNuitPuffProducts/blob/main/banner/ver.3/lanuit-1769934539713.jpg?raw=true);
+  height: 570px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.product-dropdown {
+  .dropdown-toggle::after {
+    display: none;
+  }
+
+  .dropdown-menu {
+    min-width: 200px;
+    background-color: #fff;
+    margin-top: 30px !important;
+    transition: all 0.3s ease;
+    animation: dropdownFade 0.3s ease forwards;
+  }
+
+  .dropdown-item {
+    color: $primary;
+    transition: all 0.2s ease-in-out;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: $taupe-200;
+      color: $primary;
+    }
+  }
+}
+
+// 選單出現的小動畫
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+}
+
+.productNavigation {
+  a {
+    display: inline-block;
+    background-color: $blue-200;
+    color: $blue-300;
+    padding: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &.active {
+      color: $taupe-200;
+      background-color: $primary;
+    }
+
+    &:hover:not(.active) {
+      background-color: darken($blue-200, 5%);
+    }
+  }
+}
+
+.collection {
+  left: 40%;
+  transform: translate(-40%);
+  position: absolute;
+  font-family: $font-eng-serif;
+  color: #fdf1e4;
+  font-size: 250px;
+  font-style: italic;
+  white-space: nowrap;
+  text-align: center;
+  opacity: 0.2;
+  pointer-events: none;
+  @media (max-width: 768px) {
+    display: none;
+  }
+}

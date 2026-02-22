@@ -12,67 +12,97 @@
   border-radius: 0;
 }
 
-/* --- 顏色零件  --- */
+/* --- 顏色與狀態零件 --- */
 
-// Primary: 深藍底白字
+// Primary
 .btn-puff-primary {
   background-color: $primary;
   color: $taupe-100;
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: $secondary;
     color: $taupe-100;
   }
+  &.active {
+    background-color: $secondary;
+  }
+  &:disabled {
+    background-color: $blue-300;
+    color: $taupe-50;
+  }
 }
 
-// Outline: 線條
 .btn-puff-outline {
   border-color: $primary;
   color: $primary;
   background-color: transparent;
-  &:hover {
+
+  &:hover:not(:disabled) {
     border-color: $secondary;
     background-color: $secondary;
     color: $taupe-100;
   }
+
+  &.active {
+    background-color: $primary;
+    color: $taupe-100;
+    border-color: $primary;
+  }
+
+  &:disabled {
+    border-color: $blue-300;
+    color: $blue-300;
+  }
 }
 
-// White: 淺色底深藍字
+// White
 .btn-puff-white {
   background-color: $taupe-100;
   color: $primary;
-  &:hover {
+  &:hover:not(:disabled) {
+    background-color: $secondary;
+    color: $taupe-100;
+  }
+  &.active {
     background-color: $secondary;
     color: $taupe-100;
   }
 }
 
-// Yellow: 金色底白字
+// Yellow
 .btn-puff-yellow {
   background-color: $secondary;
   color: $taupe-100;
-  &:hover {
+  &:hover:not(:disabled) {
     filter: brightness(0.9);
+    background-color: $orange-900;
+    color: $taupe-100;
+  }
+  &:active,
+  &.active {
+    background-color: $orange-900;
+    color: $taupe-100;
+  }
+  &:disabled {
+    background-color: $orange-100;
+    color: $gray-400;
   }
 }
 
-// Disabled 狀態
-.btn-puff-disabled {
-  background-color: $blue-300 !important;
-  color: #fff !important;
-  border-color: transparent !important;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-/* --- 尺寸零件 --- */
+/* --- 尺寸零件 (保持不動) --- */
 .btn-puff-cn-s {
   padding: 8px 16px;
 }
 .btn-puff-cn-m {
   padding: 12px 20px;
+  @media (max-width: 768px) {
+    padding: 8px 16px;
+  }
 }
 .btn-puff-cn-l {
   padding: 16px 24px;
+  @media (max-width: 768px) {
+    padding: 12px 20px;
+  }
 }
 
 .btn-puff-eng-s {
@@ -80,7 +110,13 @@
 }
 .btn-puff-eng-m {
   padding: 8px 24px;
+  @media (max-width: 768px) {
+    padding: 8px 24px;
+  }
 }
 .btn-puff-eng-l {
   padding: 16px 40px;
+  @media (max-width: 768px) {
+    padding: 16px 40px;
+  }
 }

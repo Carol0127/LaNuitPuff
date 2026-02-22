@@ -1,0 +1,43 @@
+.newSwiper {
+  width: 100%;
+  height: 456px;
+
+  .swiper-slide {
+    img {
+      width: 100%;
+      height: 456px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .newSwiper {
+    height: auto !important;
+  }
+  .newSwiper .swiper-slide {
+    height: auto;
+
+    .row {
+      height: auto;
+    }
+
+    img {
+      height: 300px;
+    }
+  }
+}
+
+.newsText {
+  width: 100%;
+  max-width: 456px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  @media (max-width: 768px) {
+    max-width: 768px;
+    min-height: 250px;
+  }
+}

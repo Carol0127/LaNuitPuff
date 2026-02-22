@@ -1,6 +1,9 @@
 import { createHashRouter } from "react-router";
 import FrontendLayout from "./layout/FrontendLayout";
 import Home from "./views/frontend/Home";
+import Products from "./views/frontend/Products";
+import ProductDetail from "./views/frontend/ProductDetail";
+import Cart from "./views/frontend/Cart";
 
 export const router = createHashRouter([
   {
@@ -10,6 +13,18 @@ export const router = createHashRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "products",
+        element: <Products />,
+      },
+      {
+        path: "product/:id",
+        element: <ProductDetail />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
       },
     ],
   },

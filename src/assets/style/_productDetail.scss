@@ -1,0 +1,75 @@
+/* 規格選擇按鈕 */
+.btn-spec-minimal {
+  border: 1px solid #dee2e6;
+  background: white;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 15px;
+  color: #495057;
+  transition: all 0.2s ease;
+  &:hover {
+    border-color: var(--bs-primary);
+  }
+  &.active {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: white;
+    font-weight: 600;
+  }
+}
+
+/* 側邊欄 Tab */
+.sidebar-tab-item {
+  width: 100%;
+  padding: 16px 24px;
+  background: #f8f9fa;
+  border: none;
+  border-radius: 8px;
+  text-align: left;
+  transition: all 0.3s ease;
+  color: #6c757d;
+
+  .arrow-icon {
+    opacity: 0;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  &:hover {
+    background: #f1f3f5;
+  }
+
+  &.active {
+    background: var(--bs-primary);
+    color: white;
+    box-shadow: 0 4px 15px rgba(var(--bs-primary-rgb), 0.2);
+    .arrow-icon {
+      opacity: 1;
+      transform: translateX(5px);
+    }
+  }
+}
+
+/* 內容區間距與線條 */
+.ps-36 {
+  padding-left: 36px;
+}
+.tracking-widest {
+  letter-spacing: 0.15em;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,89 @@
+.cart-step-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.step-circle {
+  // 基礎形狀與大小
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #a3afcf; // 預設未到達的顏色
+
+  // 置中數字內容
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0; // 防止圓圈變形
+
+  // 數字樣式
+  .step-circle-text {
+    font-family: $font-eng-serif !important;
+    font-size: 20px;
+    color: $taupe-200;
+    line-height: 1;
+  }
+}
+
+.step-node {
+  flex-shrink: 0;
+
+  .step-label {
+    color: $blue-300;
+    white-space: nowrap;
+  }
+
+  &.active {
+    .step-circle {
+      background-color: $primary;
+    }
+    .step-label {
+      color: $primary;
+    }
+  }
+}
+
+.step-line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #a3afcf;
+  margin: 0 16px;
+  max-width: 300px;
+
+  &.active {
+    background-color: $primary;
+  }
+}
+
+/* --- 手機版 RWD --- */
+@media (max-width: 1024px) {
+  .step-node {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+
+    .step-circle {
+      margin-right: 0 !important;
+    }
+  }
+
+  .step-line {
+    margin: -24px 8px 0 8px;
+    min-width: 20px;
+    flex-grow: 1;
+  }
+}
+
+@media (max-width: 375px) {
+  .step-node {
+    .step-label {
+      display: none;
+    }
+  }
+
+  .step-line {
+    margin: 0 8px;
+    max-width: none;
+  }
+}

@@ -12,3 +12,24 @@ export const getPopularProducts = async () => {
     console.log(error);
   }
 };
+
+export const getProducts = async (page = 1, category = "") => {
+  try {
+    const res = await api.get(`/api/${VITE_API_PATH}/products`, {
+      params: { page, category },
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/* 取得單一商品細節 */
+export const getProductById = async (id) => {
+  try {
+    const res = await api.get(`/api/${VITE_API_PATH}/product/${id}`);
+    return res.data.product; // 回傳單一商品物件
+  } catch (error) {
+    console.log("取得單一商品失敗", error);
+  }
+};
