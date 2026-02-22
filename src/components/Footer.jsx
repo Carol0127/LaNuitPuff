@@ -14,7 +14,7 @@ function Footer() {
                 className="mb-20"
               />
               <ul className="navbar-nav flex-row flex-wrap">
-                <li className="nav-item me-20">
+                <li className="nav-item me-16">
                   <NavLink
                     className="nav-link p-0 eng-heading-h5 text-white"
                     to="/"
@@ -22,15 +22,15 @@ function Footer() {
                     Home
                   </NavLink>
                 </li>
-                <li className="nav-item me-20">
+                <li className="nav-item me-16">
                   <NavLink
                     className="nav-link p-0 eng-heading-h5 text-white"
-                    to="/Product"
+                    to="/products"
                   >
                     Product
                   </NavLink>
                 </li>
-                <li className="nav-item me-20">
+                <li className="nav-item me-16">
                   <NavLink
                     className="nav-link p-0 eng-heading-h5 text-white"
                     to="/Contact"
@@ -63,7 +63,7 @@ function Footer() {
             </div>
           </div>
           <div className="d-flex justify-content-between align-items-center">
-            <p className="text-blue-300 eng-label-s m-0">2026 © Copyright By La Nuit Puff. All Rights Reserved.</p>
+            <p className="text-blue-300 eng-label-m m-0">2026 © Copyright By La Nuit Puff. All Rights Reserved.</p>
             <ul className="navbar-nav justify-content-center flex-row">
               <li className="nav-item me-16">
                 <i

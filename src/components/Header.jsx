@@ -1,33 +1,61 @@
-import { NavLink } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import { useState, useEffect } from "react";
+
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const isInnerPage = pathname !== "/";
+
+  const closeMenu = () => {
+    const closeBtn = document.querySelector("#offcanvasNavbar .btn-close");
+    if (closeBtn) closeBtn.click();
+  };
+
+  // 處理錨點捲動
+  const handleAnchorClick = (id) => {
+    if (pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 300);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+    closeMenu();
+  };
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        isScrolled && setIsScrolled(false);
+      setIsScrolled(window.scrollY > 50);
+
+      if (pathname === "/") {
+        const newsEl = document.getElementById("news");
+        const contactEl = document.getElementById("contact");
+        const scrollPos = window.scrollY + 200;
+        if (contactEl && scrollPos >= contactEl.offsetTop) setActiveSection("contact");
+        else if (newsEl && scrollPos >= newsEl.offsetTop) setActiveSection("news");
+        else setActiveSection("");
       }
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isScrolled]);
+  }, [pathname]);
 
   return (
     <>
       <nav
         className={`navbar navbar-expand-lg navbar-dark p-0 fixed-top transition-navbar ${
-          isScrolled ? "bg-primary" : "bg-transparent"
+          isInnerPage || isScrolled ? "bg-primary shadow-sm" : "bg-transparent"
         }`}
       >
         <div className="container px-16 py-12 py-lg-20">
-          {/* 1. LOGO */}
           <NavLink
             className="navbar-brand me-auto p-0"
             to="/"
+            onClick={closeMenu}
           >
             <img
               src="https://github.com/Carol0127/LaNuitPuffProducts/blob/main/LOGO/logo%E6%AD%A3.png?raw=true"
@@ -36,7 +64,6 @@ function Header() {
             />
           </NavLink>
 
-          {/* 2. 右側 Icon (User/Cart) */}
           <div className="d-flex align-items-center order-lg-3">
             <ul className="navbar-nav flex-row">
               <li>
@@ -44,48 +71,41 @@ function Header() {
                   className="nav-link me-20 me-lg-0"
                   to="/user"
                 >
-                  <span className="material-symbols-outlined icon-fill align-bottom">person</span>
+                  <span className="material-symbols-outlined">person</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  className="nav-link  me-20 me-lg-0"
+                  className="nav-link me-20 me-lg-0"
                   to="/cart"
                 >
-                  <span className="material-symbols-outlined icon-fill align-bottom">shopping_cart</span>
+                  <span className="material-symbols-outlined">shopping_cart</span>
                 </NavLink>
               </li>
             </ul>
-
-            {/* 漢堡按鈕  */}
             <button
               className="navbar-toggler border-0 p-0"
               type="button"
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasNavbar"
-              aria-controls="offcanvasNavbar"
             >
               <span className="navbar-toggler-icon"></span>
             </button>
           </div>
 
-          {/* 4. Offcanvas 側邊選單本體 */}
           <div
             className="offcanvas offcanvas-end bg-primary"
             tabIndex="-1"
             id="offcanvasNavbar"
-            aria-labelledby="offcanvasNavbarLabel"
           >
             <div className="offcanvas-header px-16 py-20">
               <button
                 type="button"
                 className="btn-close btn-close-white"
                 data-bs-dismiss="offcanvas"
-                aria-label="Close"
                 style={{ fontSize: "24px" }}
               ></button>
             </div>
-
             <div className="offcanvas-body">
               <ul
                 className="navbar-nav justify-content-center flex-grow-1 pe-3 text-center"
@@ -93,47 +113,52 @@ function Header() {
               >
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link eng-heading-h5"
+                    className={({ isActive }) =>
+                      `nav-link eng-heading-h5 ${isActive && activeSection === "" ? "active" : ""}`
+                    }
                     to="/"
+                    onClick={closeMenu}
                   >
                     Home
                   </NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link   eng-heading-h5"
+                    className="nav-link eng-heading-h5"
                     to="/About"
+                    onClick={closeMenu}
                   >
                     About
                   </NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link   eng-heading-h5"
-                    to="/Shop"
+                    className="nav-link eng-heading-h5"
+                    to="/Products"
+                    onClick={closeMenu}
                   >
                     Shop
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink
-                    className="nav-link   eng-heading-h5"
-                    to="/News"
+                  <button
+                    className={`nav-link eng-heading-h5 w-100 bg-transparent border-0 ${activeSection === "news" ? "active" : ""}`}
+                    onClick={() => handleAnchorClick("news")}
                   >
                     News
-                  </NavLink>
+                  </button>
                 </li>
                 <li className="nav-item">
-                  <NavLink
-                    className="nav-link   eng-heading-h5"
-                    to="/Contact"
+                  <button
+                    className={`nav-link eng-heading-h5 w-100 bg-transparent border-0 ${activeSection === "contact" ? "active" : ""}`}
+                    onClick={() => handleAnchorClick("contact")}
                   >
                     Contact
-                  </NavLink>
+                  </button>
                 </li>
               </ul>
             </div>
-
+            {/* Footer 部分 */}
             <div className="offcanvas-footer d-lg-none mb-20">
               <ul className="navbar-nav justify-content-center flex-row mb-16">
                 <li className="nav-item me-16">
@@ -149,9 +174,8 @@ function Header() {
                   ></i>
                 </li>
               </ul>
-              <p className="text-blue-300 text-center eng-label-s m-0">
-                2026 © Copyright By La Nuit Puff. <br />
-                All Rights Reserved.
+              <p className="text-blue-300 text-center eng-label-m m-0">
+                2026 © Copyright By La Nuit Puff. <br /> All Rights Reserved.
               </p>
             </div>
           </div>

@@ -12,11 +12,22 @@
 
 @import "bootstrap/scss/bootstrap";
 
-@import "./typography";
-@import "./button";
-@import "./header";
-@import "./footer";
+@import "./base/base";
+
+@import "./components/typography";
+@import "./components/button";
+@import "./components/header";
+@import "./components/footer";
+@import "./components/productCard";
+@import "./components/cartStep";
+@import "./components/cartTable";
+
 @import "./swiper/heroSwiper";
 @import "./swiper/brandSwiper";
 @import "./swiper/puffSeriesSwiper";
-@import "./productCard";
+@import "./swiper/newSwiper";
+@import "./swiper/productDetailSwiper";
+
+@import "./home";
+@import "./products";
+@import "./productDetail";

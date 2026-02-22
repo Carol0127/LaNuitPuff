@@ -1,0 +1,361 @@
+.icon-fill {
+  font-variation-settings: "FILL" 1 !important;
+}
+
+// 字體重量對照表
+$fw-bold: 700;
+$fw-semibold: 600;
+$fw-medium: 500;
+$fw-regular: 400;
+
+/* ==========================================================================
+   CN Typography (Responsive with max-width)
+   ========================================================================== */
+
+[class*="cn-heading-"] {
+  font-family: $font-noto-serif !important;
+  line-height: 1.5;
+}
+
+[class*="cn-body-"] {
+  font-family: $font-noto-sans !important;
+  line-height: 1.4;
+}
+
+.cn-display {
+  font-family: $font-noto-serif;
+  font-weight: $fw-bold;
+  line-height: 1.2;
+  letter-spacing: 4px;
+
+  &-xl {
+    font-size: 64px;
+    @media (max-width: 768px) {
+      font-size: 52px;
+    } // XL -> L
+  }
+  &-l {
+    font-size: 52px;
+    @media (max-width: 768px) {
+      font-size: 48px;
+    } // L -> M
+  }
+  &-m {
+    font-size: 48px;
+    @media (max-width: 768px) {
+      font-size: 40px;
+    } // M -> S
+  }
+  &-s {
+    font-size: 40px;
+    font-weight: $fw-medium;
+    @media (max-width: 768px) {
+      font-size: 32px;
+    } // S -> h2
+  }
+}
+
+.cn-heading {
+  &-h1 {
+    font-size: 36px;
+    font-weight: $fw-bold;
+    letter-spacing: 4px;
+    @media (max-width: 991px) {
+      font-size: 32px;
+    } // h1 -> h2
+  }
+  &-h2 {
+    font-size: 32px;
+    font-weight: $fw-bold;
+    letter-spacing: 2px;
+    @media (max-width: 991px) {
+      font-size: 28px;
+    } // h2 -> h3
+  }
+  &-h3 {
+    font-size: 28px;
+    font-weight: $fw-semibold;
+    letter-spacing: 2px;
+    @media (max-width: 991px) {
+      font-size: 24px;
+    } // h3 -> h4
+  }
+  &-h4 {
+    font-size: 24px;
+    font-weight: $fw-semibold;
+    letter-spacing: 2px;
+    @media (max-width: 991px) {
+      font-size: 20px;
+    } // h4 -> h5
+  }
+  &-h5 {
+    font-size: 20px;
+    font-weight: $fw-medium;
+    letter-spacing: 2px;
+    @media (max-width: 991px) {
+      font-size: 18px;
+    } // h5 -> h6
+  }
+}
+
+.cn-body {
+  font-family: $font-noto-sans;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+
+  // --- XL 系列 (桌機 24px -> 手機 20px) ---
+  &-xl-bold {
+    font-size: 24px;
+    font-weight: $fw-bold;
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+  }
+  &-xl-regular {
+    font-size: 24px;
+    font-weight: $fw-regular;
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+  }
+
+  // --- L 系列 (桌機 20px -> 手機 18px) ---
+  &-l-bold {
+    font-size: 20px;
+    font-weight: $fw-bold;
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
+  }
+  &-l-regular {
+    font-size: 20px;
+    font-weight: $fw-regular;
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
+  }
+
+  // --- M 系列 (桌機 18px -> 手機 16px) ---
+  &-m-bold {
+    font-size: 18px;
+    font-weight: $fw-bold;
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+  &-m-regular {
+    font-size: 18px;
+    font-weight: $fw-regular;
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+
+  // --- M 系列 (桌機 18px -> 手機 16px) ---
+  &-s-bold {
+    font-size: 16px;
+    font-weight: $fw-bold;
+  }
+  &-s-regular {
+    font-size: 16px;
+    font-weight: $fw-regular;
+  }
+}
+
+.cn-label {
+  font-family: $font-noto-sans;
+  line-height: 1.4;
+  &-l {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+
+  &-m {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
+  }
+  &-s {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+}
+/* ==========================================================================
+   English Typography (Corrected Nesting)
+   ========================================================================== */
+
+[class*="eng-heading-"],
+[class*="eng-display-"],
+[class*="eng-label-"] {
+  font-family: $font-eng-serif !important;
+}
+
+.eng-display {
+  font-family: $font-eng-serif !important;
+  line-height: 1.2;
+  letter-spacing: 4px;
+
+  &-xl {
+    font-size: 64px;
+    font-weight: 700;
+    @media (max-width: 768px) {
+      font-weight: 400;
+      font-size: 48px; // XL -> M (連跳兩級)
+    }
+  }
+
+  &-l {
+    font-size: 52px;
+    font-weight: 700;
+    @media (max-width: 768px) {
+      font-size: 40px; // L -> S (連跳兩級)
+    }
+  }
+
+  &-m {
+    font-size: 48px;
+    font-weight: 400;
+    @media (max-width: 768px) {
+      font-size: 36px; // M -> h1 (連跳兩級)
+    }
+  }
+
+  &-s {
+    font-size: 40px;
+    font-weight: 400;
+    @media (max-width: 768px) {
+      font-weight: $fw-bold;
+      font-size: 32px; // S -> h2 (連跳兩級)
+    }
+  }
+}
+
+.eng-heading {
+  line-height: 1.3;
+
+  &-h1 {
+    font-size: 36px;
+    font-weight: $fw-bold;
+    @media (max-width: 768px) {
+      font-size: 28px;
+    } // h1 -> h3 (連跳兩級)
+  }
+  &-h2 {
+    font-size: 32px;
+    font-weight: $fw-bold;
+    @media (max-width: 768px) {
+      font-size: 24px;
+    } // h2 -> h4 (連跳兩級)
+  }
+  &-h3 {
+    font-size: 28px;
+    font-weight: $fw-bold;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+    } // h3 -> h5
+  }
+  &-h4 {
+    font-size: 24px;
+    font-weight: $fw-bold;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+    } // h4 -> h6
+  }
+  &-h5 {
+    font-size: 20px;
+    font-weight: 400;
+    @media (max-width: 768px) {
+      font-size: 18px;
+    } // h5 -> Small
+  }
+  &-h6 {
+    font-size: 16px;
+    font-weight: 400;
+    @media (max-width: 768px) {
+      font-size: 14px;
+    } // h6 -> XS
+  }
+}
+
+.eng-label {
+  font-family: $font-eng-serif !important;
+  line-height: 1.4;
+
+  &-l {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+
+  &-m {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
+  }
+}
+
+[class*="eng-heading-italic-"] {
+  font-family: $font-eng-serif !important;
+  font-style: italic;
+}
+
+.eng-heading-italic {
+  &-h1 {
+    font-size: 36px;
+    font-weight: $fw-bold;
+    letter-spacing: 4px;
+    @media (max-width: 768px) {
+      font-size: 28px;
+    } // h1 -> h3 (連跳兩級)
+  }
+  &-h2 {
+    font-size: 32px;
+    font-weight: $fw-bold;
+    letter-spacing: 2px;
+    @media (max-width: 768px) {
+      font-size: 24px;
+    } // h2 -> h4 (連跳兩級)
+  }
+  &-h3 {
+    font-size: 28px;
+    font-weight: $fw-bold;
+    letter-spacing: 2px;
+    @media (max-width: 768px) {
+      font-size: 20px;
+    } // h3 -> h5
+  }
+  &-h4 {
+    font-size: 24px;
+    font-weight: $fw-bold;
+    @media (max-width: 768px) {
+      font-size: 18px;
+    } // h4 -> h6
+  }
+  &-h5 {
+    font-size: 20px;
+    font-weight: 400;
+    @media (max-width: 768px) {
+      font-size: 18px;
+    } // h5 -> Small
+  }
+  &-h6 {
+    font-size: 16px;
+    font-weight: 400;
+  }
+}

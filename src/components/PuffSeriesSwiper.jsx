@@ -41,7 +41,7 @@ function PuffSeriesSwiper() {
   ];
   return (
     <>
-      <div className="col-lg-5 ps-lg-0 mb-24 mb-lg-0 d-flex flex-column justify-content-center">
+      <div className="col-lg-5 ps-lg-0 mb-24 mb-lg-0 d-flex flex-column justify-content-center border-start border-primary">
         <div className="text-content-wrapper px-lg-28">
           <div className="d-flex justify-content-between align-items-center mb-12">
             <h3
@@ -69,7 +69,7 @@ function PuffSeriesSwiper() {
 
           <div style={{ minHeight: "120px" }}>
             <p className="text-gray-800 cn-body-m-bold mb-12">{puffSeries[activeIndex].subTitle}</p>
-            <p className="text-gray-800 cn-body-m">{puffSeries[activeIndex].desc}</p>
+            <p className="text-gray-800 cn-body-m-regular">{puffSeries[activeIndex].desc}</p>
           </div>
 
           <div className="dots d-flex gap-2 mt-16">

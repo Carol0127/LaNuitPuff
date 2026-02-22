@@ -1,0 +1,74 @@
+.product-swiper-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 16px;
+  overflow: hidden;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    height: 500px;
+  }
+
+  .productFirstImgs {
+    width: 100% !important;
+    height: 420px;
+    order: 1;
+
+    @media (min-width: 1024px) {
+      width: 100%;
+      height: 500px;
+      order: 2;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .productImgs {
+    width: 100% !important;
+    height: 110px;
+    order: 2;
+
+    @media (min-width: 1024px) {
+      width: 110px !important;
+      height: 500px;
+      order: 1;
+      margin: 0;
+    }
+
+    .swiper-slide {
+      // 手機版：這裡一定要設寬度，Swiper 才會正確計算 slidesPerView: "auto"
+      width: 90px;
+      height: 110px;
+      opacity: 0.4;
+      cursor: pointer;
+
+      @media (min-width: 1024px) {
+        width: 110px !important;
+        height: 110px !important;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &.swiper-slide-thumb-active {
+        opacity: 1;
+        outline: 2px solid #1c2a44;
+        outline-offset: -2px;
+      }
+    }
+  }
+}
+
+.productPrice {
+  font-family: $font-eng-serif;
+  font-size: 28px;
+  font-weight: $fw-bold;
+}

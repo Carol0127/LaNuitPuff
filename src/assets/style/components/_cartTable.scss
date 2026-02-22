@@ -1,0 +1,39 @@
+.cart-container {
+  .cart-header {
+    letter-spacing: 2px;
+  }
+
+  .cart-item {
+    .product-img {
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .form-select {
+      font-size: 16px !important;
+      width: 140px;
+      border: 0px;
+
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+
+      // 4. 電腦版置中修正
+      @media (min-width: 992px) {
+        width: auto;
+        text-align: center;
+        text-align-last: center; // 確保選中的文字也置中
+      }
+
+      // 5. 互動狀態
+      &:hover {
+        border-color: $primary !important;
+      }
+    }
+  }
+}
