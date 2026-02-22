@@ -4,9 +4,14 @@ import "./assets/style/all.scss";
 import { RouterProvider } from "react-router";
 import { router } from "./router.jsx";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import ScrollToHash from "./hooks/scrollToHash.jsx";
+import { Provider } from "react-redux";
+import { store } from "./store/store.js";
+import "sweetalert2/src/sweetalert2.scss";
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </StrictMode>,
 );

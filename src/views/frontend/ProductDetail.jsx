@@ -5,7 +5,9 @@ import { getProductById } from "../../services/products";
 import QtyInput from "../../components/QtyInput";
 import ProductDetailSwiper from "../../components/ProductDetailSwiper";
 import PopularCardSwiper from "../../components/PopularCardSwiper";
-import { handleAddToCart } from "../../hooks/handleAddToCart";
+
+import { useDispatch } from "react-redux";
+import { addToCartAsync } from "../../store/slices/cartSlice";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -13,6 +15,7 @@ function ProductDetail() {
 
   const [spec, setSpec] = useState("solo");
   const [iconfill, setIconFill] = useState(false);
+  const dispatch = useDispatch();
 
   const [quantity, setQuantity] = useState(1);
 
@@ -114,7 +117,7 @@ function ProductDetail() {
                 />
                 <button
                   className="w-100 eng-label-l btn-puff-yellow btn-puff-eng-l btn-puff"
-                  onClick={() => handleAddToCart(product.id, quantity)}
+                  onClick={() => dispatch(addToCartAsync({ id: product.id, qty: quantity }))}
                 >
                   Add To Cart
                 </button>
@@ -123,7 +126,7 @@ function ProductDetail() {
             <NavLink to="/cart">
               <button
                 className="w-100 eng-label-l btn-puff-outline btn-puff-eng-l btn-puff"
-                onClick={() => handleAddToCart(product.id, quantity)}
+                onClick={() => dispatch(addToCartAsync({ id: product.id, qty: quantity }))}
               >
                 Buy It Now
               </button>

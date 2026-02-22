@@ -1,20 +1,25 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../../services/products";
 import ProductsFilter from "../../components/ProductsFilter";
 import ProductNavigation from "../../components/ProductNavigation";
 import ProductSort from "../../components/ProductsSort";
 import PopularCardSwiper from "../../components/PopularCardSwiper";
 import PuffSeriesSwiper from "../../components/PuffSeriesSwiper";
 import { useNavigate } from "react-router";
-import { handleAddToCart } from "../../hooks/handleAddToCart";
+// import { handleAddToCart } from "../../hooks/handleAddToCart";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProductsAsync, sortProducts } from "../../store/slices/productSlice";
+import { addToCartAsync } from "../../store/slices/cartSlice";
 
-function About() {
+function Products() {
   const navigate = useNavigate();
-  const [products, setProducts] = useState([]);
-  const [pagination, setPagination] = useState({}); // 儲存分頁
-  const [currentCategory, setCurrentCategory] = useState(""); // 儲存分類
-  const [currentPage, setCurrentPage] = useState(1); // 儲存頁碼
-  const [sortOrder, setSortOrder] = useState(""); // 儲存排序方式
+  const dispatch = useDispatch();
+
+  const { productData, pagination } = useSelector((state) => state.product);
+
+  const [currentCategory, setCurrentCategory] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [sortOrder, setSortOrder] = useState("");
+
   const categoryList = [
     { title: "全部品項", eng: "All", value: "" },
     { title: "甜蜜擁抱系", eng: "Comforting Hug", value: "甜蜜擁抱系" },
@@ -25,17 +30,14 @@ function About() {
   ];
 
   useEffect(() => {
-    getProducts(currentPage, currentCategory).then((data) => {
-      if (data) {
-        let list = [...data.products];
-        if (sortOrder === "low") list.sort((a, b) => a.price - b.price);
-        if (sortOrder === "high") list.sort((a, b) => b.price - a.price);
+    dispatch(fetchProductsAsync({ page: currentPage, category: currentCategory }));
+  }, [dispatch, currentPage, currentCategory]);
 
-        setProducts(list);
-        setPagination(data.pagination);
-      }
-    });
-  }, [currentPage, currentCategory, sortOrder]);
+  useEffect(() => {
+    if (sortOrder) {
+      dispatch(sortProducts(sortOrder));
+    }
+  }, [dispatch, sortOrder]);
 
   const handleCardClick = (id) => {
     navigate(`/product/${id}`);
@@ -68,7 +70,7 @@ function About() {
                 <ProductSort setSortOrder={setSortOrder} />
               </div>
             </div>
-            {products.map((item) => (
+            {productData.map((item) => (
               <div
                 key={item.id}
                 className="col-6 col-lg-3 px-8 px-lg-12 d-flex align-items-stretch "
@@ -86,7 +88,7 @@ function About() {
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        handleAddToCart(item.id, 1);
+                        dispatch(addToCartAsync({ id: item.id, qty: 1 }));
                       }}
                     >
                       Add To Cart
@@ -136,4 +138,4 @@ function About() {
   );
 }
 
-export default About;
+export default Products;

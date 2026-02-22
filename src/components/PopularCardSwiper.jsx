@@ -3,15 +3,19 @@ import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { getPopularProducts } from "../services/products";
 import { NavLink } from "react-router";
-import { handleAddToCart } from "../hooks/handleAddToCart";
+import { useDispatch } from "react-redux";
+import { addToCartAsync } from "../store/slices/cartSlice";
 
 function PopularCardSwiper() {
   const [popularItems, setPopularItems] = useState([]);
+
   useEffect(() => {
     getPopularProducts()
       .then((data) => setPopularItems(data))
       .catch((err) => console.error(err));
   }, []);
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -54,7 +58,7 @@ function PopularCardSwiper() {
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
-                      handleAddToCart(item.id, 1);
+                      dispatch(addToCartAsync({ id: item.id, qty: 1 }));
                     }}
                   >
                     Add To Cart
