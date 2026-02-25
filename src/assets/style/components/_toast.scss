@@ -1,20 +1,25 @@
-/* La Nuit Puff 專屬直角樣式 */
-.lanuit-toast-flat {
-  border-radius: 0 !important;
-  border: 1px solid #5c6fa3 !important;
-  padding: 1rem !important;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3) !important;
+/* --- 成功狀態  --- */
+.lanuit-toast-flat.lanuit-toast-success {
+  border: 1px solid #2e8b68 !important;
 }
 
-/* 標題字體調整 */
-.lanuit-toast-flat .swal2-title {
-  font-size: 16px !important;
-  font-weight: 400 !important;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+.lanuit-toast-flat.lanuit-toast-success .swal2-title {
+  color: #002b1b !important;
 }
 
-.lanuit-toast-progress {
-  background: #f2ae68 !important;
-  height: 3px !important;
+.lanuit-toast-flat.lanuit-toast-success .lanuit-toast-progress {
+  background: #4fb286 !important; /* Success 400 */
+}
+
+/* --- 失敗狀態  --- */
+.lanuit-toast-flat.lanuit-toast-error {
+  border: 1px solid #d64545 !important;
+}
+
+.lanuit-toast-flat.lanuit-toast-error .swal2-title {
+  color: #3d0a0a !important;
+}
+
+.lanuit-toast-flat.lanuit-toast-error .lanuit-toast-progress {
+  background: #d64545 !important;
 }

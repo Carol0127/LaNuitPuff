@@ -12,6 +12,7 @@ export default defineConfig({
     ],
     quietDeps: true,
   },
+
   base: process.env.NODE_ENV === "production" ? "/LaNuitPuff/" : "/",
   plugins: [react()],
 });

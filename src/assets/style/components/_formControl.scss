@@ -1,0 +1,9 @@
+.form-control {
+  border-radius: 0px;
+  border: none;
+  border-bottom: 1px solid $gray-500 !important;
+  &::placeholder {
+    color: $gray-500;
+    opacity: 1;
+  }
+}

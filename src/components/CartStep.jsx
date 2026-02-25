@@ -8,7 +8,7 @@ const CartStep = ({ step = 1 }) => {
   ];
 
   return (
-    <div className="cart-step-container d-flex align-items-center justify-content-between mb-32">
+    <div className="cart-step-container d-flex align-items-center justify-content-between mb-32 ">
       {steps.map((item, index) => (
         <React.Fragment key={item.id}>
           <div className={`step-node d-flex align-items-center ${step >= item.id ? "active" : ""}`}>
