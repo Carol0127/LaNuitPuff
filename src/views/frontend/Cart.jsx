@@ -4,88 +4,88 @@ import CartTable from "../../components/CartTable";
 import PopularCardSwiper from "../../components/PopularCardSwiper";
 import { NavLink } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCartAsync } from "../../store/slices/cartSlice";
-
+import { fetchCartAsync, selectCartSummary } from "../../store/slices/cartSlice";
+import { useCartActions } from "../../hooks/useCartActions";
 function Cart() {
+  const { clearCartWithConfirm } = useCartActions();
   const dispatch = useDispatch();
 
-  const { cartData, final_total } = useSelector((state) => state.cart);
+  const { cartData } = useSelector((state) => state.cart);
+  const { subtotal, isFreeShipping, shippingCharge, amountToFree, totalAmount } = useSelector(selectCartSummary);
 
   useEffect(() => {
     dispatch(fetchCartAsync());
   }, [dispatch]);
 
-  // --- 計算邏輯 ---
-  const SHIPPING_THRESHOLD = 500;
-  const SHIPPING_FEE = 60;
-
-  const subtotal = final_total;
-  const isFreeShipping = subtotal >= SHIPPING_THRESHOLD;
-  const shippingCharge = cartData.length > 0 && !isFreeShipping ? SHIPPING_FEE : 0;
-  const amountToFree = SHIPPING_THRESHOLD - subtotal;
-  const totalAmount = subtotal + shippingCharge;
   return (
     <>
       {cartData.length > 0 ? (
         <>
           <section className="bg-taupe-200 mt-80 mt-lg-100 py-64 py-lg-80">
             <div className="container">
-              <h1 className="eng-display-xl text-primary mb-32">/ Your Cart</h1>
-              <CartStep step={1} />
-              <CartTable
-                getCartData={() => dispatch(fetchCartAsync())}
-                cartData={cartData}
-              />
-              <div className="mb-32 d-lg-flex justify-content-between align-items-center">
-                <p className="mb-24 mb-lg-0 cn-body-s-regular text-primary">有優惠券？別忘記使用了</p>
-                <div className="input-group w-auto">
-                  <div className=" border-bottom border-primary me-12 me-lg-20">
-                    <input
-                      type="text"
-                      className="form-control bg-transparent border-0 eng-label-m text-primary"
-                      placeholder="Coupang"
-                    />
+              <div className="row">
+                <h1 className="eng-display-xl text-primary mb-32">/ Your Cart</h1>
+                <CartStep step={1} />
+                <CartTable
+                  getCartData={() => dispatch(fetchCartAsync())}
+                  cartData={cartData}
+                />
+                <div className="mb-32 d-lg-flex justify-content-between align-items-center">
+                  <p className="mb-24 mb-lg-0 cn-body-s-regular text-primary">有優惠券？別忘記使用了</p>
+                  <div className="input-group w-auto">
+                    <div className=" border-bottom border-primary me-12 me-lg-20">
+                      <input
+                        type="text"
+                        className="form-control bg-transparent border-0 eng-label-m text-primary"
+                        placeholder="Coupang"
+                      />
+                    </div>
+
+                    <button
+                      className="btn-puff btn-puff-outline btn-puff-eng-m   eng-label-m"
+                      type="button"
+                    >
+                      Apply
+                    </button>
                   </div>
-
-                  <button
-                    className="btn-puff btn-puff-outline btn-puff-eng-m   eng-label-m"
-                    type="button"
-                  >
-                    Apply
-                  </button>
                 </div>
-              </div>
-              <div className="bg-white border border-1 mb-32 py-28 px-16">
-                <h3 className="eng-heading-italic-h2 text-primary mb-28">Cart Totals</h3>
-                <ul className="list-unstyled ">
-                  <li className="d-flex justify-content-between mb-24">
-                    <p className="text-primary cn-body-s-bold mb-0">小計</p>
-                    <p className="text-gray-800 cn-body-s mb-0">NT.{subtotal}</p>
-                  </li>
-                  <li className="d-flex justify-content-between mb-8">
-                    <p className="text-primary cn-body-s-bold mb-0">運費</p>
-                    <p className={`cn-body-s mb-0 ${isFreeShipping ? "text-success" : "text-gray-800"}`}>
-                      {isFreeShipping ? "免運費" : `NT.${shippingCharge}`}
-                    </p>
-                  </li>
+                <div className="bg-white border border-1 mb-32 py-28 px-16">
+                  <h3 className="eng-heading-italic-h2 text-primary mb-28">Cart Totals</h3>
+                  <ul className="list-unstyled ">
+                    <li className="d-flex justify-content-between mb-24">
+                      <p className="text-primary cn-body-s-bold mb-0">小計</p>
+                      <p className="text-gray-800 cn-body-s mb-0">NT.{subtotal}</p>
+                    </li>
+                    <li className="d-flex justify-content-between mb-8">
+                      <p className="text-primary cn-body-s-bold mb-0">運費</p>
+                      <p className={`cn-body-s mb-0 ${isFreeShipping ? "text-success" : "text-gray-800"}`}>
+                        {isFreeShipping ? "免運費" : `NT.${shippingCharge}`}
+                      </p>
+                    </li>
 
-                  <li className="d-flex justify-content-between pb-24 border-bottom mb-24">
-                    <p className="text-gray-600 cn-label-s mb-0">全館滿五百免運</p>
-                    <p className={`cn-label-s mb-0 ${isFreeShipping ? "text-success" : "text-gray-500"}`}>
-                      {isFreeShipping ? "🎉 已享免運" : `距離免運還差 NT.${amountToFree}`}
-                    </p>
-                  </li>
-                  <li className="d-flex justify-content-between ">
-                    <p className="text-primary cn-body-s-bold mb-0">合計</p>
-                    <p className="text-primary cn-body-s-regular mb-0">NT.{totalAmount}</p>
-                  </li>
-                </ul>
-              </div>
-              <div className="d-flex flex-column flex-lg-row justify-content-end">
-                <button className="btn-puff btn-puff-outline btn-puff-cn-m mb-24 mb-lg-0 me-lg-24 w-auto">
-                  清空購物車
-                </button>
-                <button className="btn-puff btn-puff-primary btn-puff-cn-m w-auto">前往結帳</button>
+                    <li className="d-flex justify-content-between pb-24 border-bottom mb-24">
+                      <p className="text-gray-600 cn-label-s mb-0">全館滿五百免運</p>
+                      <p className={`cn-label-s mb-0 ${isFreeShipping ? "text-success" : "text-gray-500"}`}>
+                        {isFreeShipping ? "🎉 已享免運" : `距離免運還差 NT.${amountToFree}`}
+                      </p>
+                    </li>
+                    <li className="d-flex justify-content-between ">
+                      <p className="text-primary cn-body-s-bold mb-0">合計</p>
+                      <p className="text-primary cn-body-s-regular mb-0">NT.{totalAmount}</p>
+                    </li>
+                  </ul>
+                </div>
+                <div className="d-flex flex-column flex-lg-row justify-content-end">
+                  <button
+                    className="btn-puff btn-puff-outline btn-puff-cn-m mb-24 mb-lg-0 me-lg-24 w-auto"
+                    onClick={clearCartWithConfirm}
+                  >
+                    清空購物車
+                  </button>
+                  <NavLink to="/checkout">
+                    <button className="btn-puff btn-puff-primary btn-puff-cn-m w-auto">前往結帳</button>
+                  </NavLink>
+                </div>
               </div>
             </div>
           </section>
@@ -102,7 +102,7 @@ function Cart() {
       ) : (
         <>
           <section
-            className="bg-taupe-200 mt-80 mt-lg-100 d-flex align-items-center justify-content-center "
+            className="bg-taupe-200 mt-80 mt-lg-100 py-64 py-lg-120 d-flex align-items-center justify-content-center "
             style={{ minHeight: "63vh" }}
           >
             <div className="container">

@@ -1,25 +1,22 @@
-import { removeItem, uploadQty } from "../services/cart";
+import { useDispatch } from "react-redux";
+import { removeItemAsync, updateQtyAsync } from "../store/slices/cartSlice";
+import { useState } from "react";
 
-const CartTable = ({ cartData, getCartData }) => {
-  const handleRemoveItem = async (id) => {
-    const res = await removeItem(id);
-    if (res.success) {
-      alert("已刪除商品");
-      getCartData();
-    } else {
-      alert(`刪除失敗：${res.message}`);
-    }
-  };
+const CartTable = ({ cartData }) => {
+  const [updatingId, setUpdatingId] = useState(null);
+  const dispatch = useDispatch();
 
   const handleUpdateQty = async (item, newQty) => {
     if (newQty < 1) return; // 防止數量小於 1
-    const res = await uploadQty(item.id, item.product_id, newQty);
-    if (res?.success) {
-      // 成功後呼叫父元件傳進來的重新取得資料函式 (例如前面說的 getCartData)
-      getCartData();
-    } else {
-      alert("更新失敗");
-    }
+    setUpdatingId(item.id);
+    await dispatch(
+      updateQtyAsync({
+        cartId: item.id,
+        productId: item.product_id,
+        qty: newQty,
+      }),
+    );
+    setUpdatingId(null); // 清空
   };
 
   return (
@@ -76,14 +73,36 @@ const CartTable = ({ cartData, getCartData }) => {
                 <button
                   className="btn border-0 p-8"
                   onClick={() => handleUpdateQty(item, item.qty - 1)}
+                  disabled={updatingId === item.id} // 鎖住按鈕
                 >
-                  <span className="material-symbols-outlined align-bottom text-primary">remove</span>
-                </button>
-                <span className="mx-12 cn-body-m-regular text-primary">{item.qty}</span>
-                <button className="btn border-0 p-8">
                   <span
-                    className="material-symbols-outlined align-bottom text-primary"
-                    onClick={() => handleUpdateQty(item, item.qty + 1)}
+                    className={`material-symbols-outlined align-bottom text-primary ${updatingId === item.id ? "opacity-25" : ""}`}
+                  >
+                    remove
+                  </span>
+                </button>
+                <div
+                  className="d-flex justify-content-center align-items-center"
+                  style={{ width: "40px" }}
+                >
+                  {updatingId === item.id ? (
+                    <div
+                      className="spinner-border spinner-border-sm text-primary"
+                      role="status"
+                    >
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
+                  ) : (
+                    <span className="cn-body-m-regular text-primary">{item.qty}</span>
+                  )}
+                </div>
+                <button
+                  className="btn border-0 p-8"
+                  onClick={() => handleUpdateQty(item, item.qty + 1)}
+                  disabled={updatingId === item.id} // 鎖住按鈕
+                >
+                  <span
+                    className={`material-symbols-outlined align-bottom text-primary ${updatingId === item.id ? "opacity-25" : ""}`}
                   >
                     add
                   </span>
@@ -102,7 +121,9 @@ const CartTable = ({ cartData, getCartData }) => {
               <button className="btn btn-delete p-0">
                 <span
                   className="material-symbols-outlined align-bottom text-primary"
-                  onClick={() => handleRemoveItem(item.id)}
+                  onClick={() => {
+                    dispatch(removeItemAsync({ id: item.id }));
+                  }}
                 >
                   delete
                 </span>
