@@ -12,6 +12,7 @@ import { addToCartAsync } from "../../store/slices/cartSlice";
 function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(true); // 新增 Loading 狀態
 
   const [spec, setSpec] = useState("solo");
   const [iconfill, setIconFill] = useState(false);
@@ -23,6 +24,10 @@ function ProductDetail() {
     getProductById(id).then((data) => {
       if (data) {
         setProduct(data);
+        // 2. 資料抓到了，但「故意」等 1.5 秒才讓 Loading 消失
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1500);
       }
     });
   }, [id]);
@@ -34,14 +39,16 @@ function ProductDetail() {
     { id: "faq", label: "常見問題", engLabel: "Q&A" },
   ];
 
-  if (!product) {
+  if (isLoading) {
     return (
-      <div className="container mt-100 d-flex justify-content-center">
-        <div
-          className="spinner-border text-primary"
-          role="status"
-        >
-          <span className="visually-hidden">Loading...</span>
+      <div className="container mt-80 py-lg-120 vh-100 d-flex flex-column align-items-center justify-content-center">
+        <div className="text-center">
+          <h2 className="eng-heading-italic-h1 text-primary mb-0 animate-loading-text">La Nuit Puff</h2>
+          <div className="loading-bar-container mx-auto mt-24">
+            <div className="loading-bar-fill"></div>
+          </div>
+
+          <p className="cn-label-m text-primary mt-32 tracking-widest">美味準備中</p>
         </div>
       </div>
     );
@@ -96,7 +103,9 @@ function ProductDetail() {
             <div>
               <p className="cn-label-m mb-16 text-gray-800">規格</p>
               <button
-                className={`btn-puff btn-puff-outline btn-puff-cn-m me-xl-12 mb-16 mb-xl-0 ${spec === "solo" ? "active" : ""}`}
+                className={`btn-puff btn-puff-outline btn-puff-cn-m me-xl-12 mb-16 mb-xl-0 ${
+                  spec === "solo" ? "active" : ""
+                }`}
                 onClick={() => setSpec("solo")}
               >
                 單顆·Solo

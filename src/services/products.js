@@ -34,3 +34,15 @@ export const getProductById = async (id) => {
     console.log("取得單一商品失敗", error);
   }
 };
+
+/*喜愛商品 (隨機 6 筆)*/
+export const getFavoriteProducts = async () => {
+  try {
+    const res = await api.get(`/api/${VITE_API_PATH}/products/all`);
+    const allProducts = res.data.products;
+    const shuffled = [...allProducts].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, 6);
+  } catch (error) {
+    console.log(error);
+  }
+};

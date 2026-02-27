@@ -6,12 +6,14 @@ import ScrollToHash from "../hooks/scrollToHash";
 function FrontendLayout() {
   return (
     <>
-      <ScrollToHash />
-      <Header />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
+      <div className="layout-container">
+        <ScrollToHash />
+        <Header />
+        <main style={{ width: "100%", minWidth: 0, display: "block" }}>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

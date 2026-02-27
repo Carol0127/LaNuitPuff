@@ -7,6 +7,8 @@ import TwCitySelector from "tw-city-selector";
 import Swal from "sweetalert2";
 import { payOrder } from "../../services/cart";
 import { useNavigate } from "react-router";
+import { NavLink } from "react-router";
+import CheckouTotalsMobile from "../../components/CheckoutTotalsMobile";
 
 function Checkout() {
   const navigate = useNavigate();
@@ -96,7 +98,7 @@ function Checkout() {
                 id="checkout-form"
                 onSubmit={handleSubmit(onSubmit)}
               >
-                <div className="mb-24 p-24 bg-white">
+                <div className="mb-24 p-24 bg-white border">
                   <div className="row ">
                     <h3 className="cn-body-xl-bold text-blue-400 mb-20 mb-lg-28">訂購人資訊</h3>
 
@@ -174,7 +176,7 @@ function Checkout() {
                   </ol>
                 </div>
 
-                <div className="mb-24 p-24 bg-white">
+                <div className="mb-24 p-24 bg-white border">
                   <div className="row ">
                     <div className="d-flex justify-content-between align-items-center mb-28">
                       <h3 className="cn-body-xl-bold text-blue-400 ">寄送資訊</h3>
@@ -262,6 +264,10 @@ function Checkout() {
                           type="hidden"
                           {...register("city", { required: "請選擇縣市" })}
                         />
+                        {/* 錯誤訊息 */}
+                        {(errors.city || errors.district) && (
+                          <p className="text-danger cn-label-s mt-8">請完整選擇配送地區</p>
+                        )}
                       </div>
 
                       <div className="col-lg-6 mb-20 mb-lg-28">
@@ -275,10 +281,6 @@ function Checkout() {
                           {...register("district", { required: "請選擇鄉鎮" })}
                         />
                       </div>
-                      {/* 錯誤訊息 */}
-                      {(errors.city || errors.district) && (
-                        <p className="text-danger cn-label-s mt-8">請完整選擇配送地區</p>
-                      )}
                     </div>
                     {/* 詳細地址 */}
                     <div className="col-12">
@@ -293,17 +295,17 @@ function Checkout() {
                     </div>
                   </div>
                 </div>
-                <div className="mb-24 ">
+                <div className="mb-24 p-24 bg-white border">
                   <h3 className="cn-body-xl-bold text-blue-400 mb-20 mb-lg-28">訂單備註</h3>
                   <textarea
                     {...register("note")}
-                    className="form-control border border-gray-500 p-12 shadow-none"
+                    className="form-control border  p-12 shadow-none"
                     id="orderNote"
                     rows="5"
                     placeholder="如有宅配或包裝需求可填寫，備註：泡芙皆為純手工製作恕無法協助客製化"
                   ></textarea>
                 </div>
-                <div className=" p-24 bg-white">
+                <div className=" p-24 bg-white border">
                   <h3 className="cn-body-xl-bold text-blue-400 mb-20 mb-lg-28">付款方式</h3>
 
                   <div className="d-lg-flex">
@@ -316,7 +318,7 @@ function Checkout() {
                         id="payCreditCard"
                       />
                       <label
-                        className="form-check-label cn-label-m text-gray-500"
+                        className="form-check-label cn-label-m text-gray-800"
                         htmlFor="payCreditCard"
                       >
                         信用卡付款
@@ -331,7 +333,7 @@ function Checkout() {
                         id="applePay"
                       />
                       <label
-                        className="form-check-label cn-label-m text-gray-500"
+                        className="form-check-label cn-label-m text-gray-800"
                         htmlFor="applePay"
                       >
                         Apple Pay
@@ -346,7 +348,7 @@ function Checkout() {
                         id="payCOD"
                       />
                       <label
-                        className="form-check-label cn-label-m text-gray-500"
+                        className="form-check-label cn-label-m text-gray-800"
                         htmlFor="payCOD"
                       >
                         貨到付款
@@ -360,9 +362,18 @@ function Checkout() {
                   )}
                 </div>
               </form>
+              <CheckouTotalsMobile
+                cartData={cartData}
+                subtotal={subtotal}
+                isFreeShipping={isFreeShipping}
+                shippingCharge={shippingCharge}
+                amountToFree={amountToFree}
+                totalAmount={totalAmount}
+              />
             </div>
+
             <div
-              className="col-lg-4 sticky-top "
+              className="col-lg-4 sticky-lg-top d-none d-lg-block"
               style={{ top: "124px" }}
             >
               <div className="p-24 bg-white border border-1">
@@ -407,8 +418,8 @@ function Checkout() {
                       </p>
                     </li>
                     <li className="d-flex justify-content-between mb-24">
-                      <p className="text-gray-600 cn-label-s mb-0">全館滿五百免運</p>
-                      <p className={`cn-label-s mb-0 ${isFreeShipping ? "text-success" : "text-gray-500"}`}>
+                      <p className="text-gray-800 cn-label-s mb-0">全館滿五百免運</p>
+                      <p className={`cn-label-s mb-0 ${isFreeShipping ? "text-success" : "text-gray-800"}`}>
                         {isFreeShipping ? "🎉 已享免運" : `距離免運還差 NT.${amountToFree}`}
                       </p>
                     </li>
@@ -419,7 +430,12 @@ function Checkout() {
                   </div>
                 </div>
                 <div>
-                  <button className="btn-puff btn-puff-outline btn-puff-cn-m cn-label-m w-100 mb-16">返回購物車</button>
+                  <NavLink
+                    className="w-100 mb-16"
+                    to="/cart"
+                  >
+                    <button className="w-100 btn-puff btn-puff-outline btn-puff-cn-m cn-label-m ">返回購物車</button>
+                  </NavLink>
                   <button
                     type="submit"
                     form="checkout-form"

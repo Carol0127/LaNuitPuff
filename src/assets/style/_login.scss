@@ -1,0 +1,19 @@
+.login-signup-wrapper {
+  .nav-link {
+    padding: 0px 0px 12px 0px;
+  }
+  .nav-tabs .nav-link {
+    color: $gray-500;
+    border-bottom: 2px solid $gray-500 !important;
+    transition: all 0.3s ease-in;
+  }
+  .nav-tabs .nav-link.active {
+    color: $secondary;
+    border-bottom: 2px solid $secondary !important;
+  }
+
+  .nav-tabs .nav-link:hover {
+    color: $secondary;
+    border-bottom: 2px solid $secondary !important;
+  }
+}

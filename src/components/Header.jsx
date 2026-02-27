@@ -10,8 +10,7 @@ function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const isInnerPage = pathname !== "/";
-
+  const isTransparentPage = pathname === "/" || pathname === "/Products";
   const closeMenu = () => {
     const closeBtn = document.querySelector("#offcanvasNavbar .btn-close");
     if (closeBtn) closeBtn.click();
@@ -58,7 +57,7 @@ function Header() {
     <>
       <nav
         className={`navbar navbar-expand-lg navbar-dark p-0 fixed-top transition-navbar ${
-          isInnerPage || isScrolled ? "bg-primary shadow-sm" : "bg-transparent"
+          !isTransparentPage || isScrolled ? "bg-primary shadow-sm" : "bg-transparent"
         }`}
       >
         <div className="container px-16 py-12 py-lg-20">
@@ -79,7 +78,7 @@ function Header() {
               <li>
                 <NavLink
                   className="nav-link me-20 me-lg-0"
-                  to="/user"
+                  to="/Login"
                 >
                   <span className="material-symbols-outlined">person</span>
                 </NavLink>
@@ -157,7 +156,9 @@ function Header() {
                 </li>
                 <li className="nav-item">
                   <button
-                    className={`nav-link eng-heading-h5 w-100 bg-transparent border-0 ${activeSection === "news" ? "active" : ""}`}
+                    className={`nav-link eng-heading-h5 w-100 bg-transparent border-0 ${
+                      activeSection === "news" ? "active" : ""
+                    }`}
                     onClick={() => handleAnchorClick("news")}
                   >
                     News
@@ -165,7 +166,9 @@ function Header() {
                 </li>
                 <li className="nav-item">
                   <button
-                    className={`nav-link eng-heading-h5 w-100 bg-transparent border-0 ${activeSection === "contact" ? "active" : ""}`}
+                    className={`nav-link eng-heading-h5 w-100 bg-transparent border-0 ${
+                      activeSection === "contact" ? "active" : ""
+                    }`}
                     onClick={() => handleAnchorClick("contact")}
                   >
                     Contact

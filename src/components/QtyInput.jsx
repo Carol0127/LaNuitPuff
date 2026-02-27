@@ -18,7 +18,7 @@ function QtyInput({ value, onChange }) {
 
       <input
         type="text"
-        className="form-control border-0 text-primary text-center bg-transparent cn-label-l"
+        className="form-control form-control-no-border text-primary text-center bg-transparent cn-label-l"
         // 使用傳進來的 value
         value={value}
         readOnly
