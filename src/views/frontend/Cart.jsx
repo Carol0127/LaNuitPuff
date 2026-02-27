@@ -32,14 +32,12 @@ function Cart() {
                 />
                 <div className="mb-32 d-lg-flex justify-content-between align-items-center">
                   <p className="mb-24 mb-lg-0 cn-body-s-regular text-primary">有優惠券？別忘記使用了</p>
-                  <div className="input-group w-auto">
-                    <div className=" border-bottom border-primary me-12 me-lg-20">
-                      <input
-                        type="text"
-                        className="form-control bg-transparent border-0 eng-label-m text-primary"
-                        placeholder="Coupang"
-                      />
-                    </div>
+                  <div className="d-flex ">
+                    <input
+                      type="text"
+                      className="form-control bg-transparent border-0 eng-label-m text-primary me-12 me-lg-20"
+                      placeholder="Coupang"
+                    />
 
                     <button
                       className="btn-puff btn-puff-outline btn-puff-eng-m   eng-label-m"
@@ -49,31 +47,33 @@ function Cart() {
                     </button>
                   </div>
                 </div>
-                <div className="bg-white border border-1 mb-32 py-28 px-16">
-                  <h3 className="eng-heading-italic-h2 text-primary mb-28">Cart Totals</h3>
-                  <ul className="list-unstyled ">
-                    <li className="d-flex justify-content-between mb-24">
-                      <p className="text-primary cn-body-s-bold mb-0">小計</p>
-                      <p className="text-gray-800 cn-body-s mb-0">NT.{subtotal}</p>
-                    </li>
-                    <li className="d-flex justify-content-between mb-8">
-                      <p className="text-primary cn-body-s-bold mb-0">運費</p>
-                      <p className={`cn-body-s mb-0 ${isFreeShipping ? "text-success" : "text-gray-800"}`}>
-                        {isFreeShipping ? "免運費" : `NT.${shippingCharge}`}
-                      </p>
-                    </li>
+                <div className="p-12">
+                  <div className="bg-white border border-1 mb-32 py-28 px-16">
+                    <h3 className="eng-heading-italic-h2 text-primary mb-28">Cart Totals</h3>
+                    <ul className="list-unstyled ">
+                      <li className="d-flex justify-content-between mb-24">
+                        <p className="text-primary cn-body-s-bold mb-0">小計</p>
+                        <p className="text-gray-800 cn-body-s mb-0">NT.{subtotal}</p>
+                      </li>
+                      <li className="d-flex justify-content-between mb-8">
+                        <p className="text-primary cn-body-s-bold mb-0">運費</p>
+                        <p className={`cn-body-s mb-0 ${isFreeShipping ? "text-success" : "text-gray-800"}`}>
+                          {isFreeShipping ? "免運費" : `NT.${shippingCharge}`}
+                        </p>
+                      </li>
 
-                    <li className="d-flex justify-content-between pb-24 border-bottom mb-24">
-                      <p className="text-gray-600 cn-label-s mb-0">全館滿五百免運</p>
-                      <p className={`cn-label-s mb-0 ${isFreeShipping ? "text-success" : "text-gray-500"}`}>
-                        {isFreeShipping ? "🎉 已享免運" : `距離免運還差 NT.${amountToFree}`}
-                      </p>
-                    </li>
-                    <li className="d-flex justify-content-between ">
-                      <p className="text-primary cn-body-s-bold mb-0">合計</p>
-                      <p className="text-primary cn-body-s-regular mb-0">NT.{totalAmount}</p>
-                    </li>
-                  </ul>
+                      <li className="d-flex justify-content-between pb-24 border-bottom mb-24">
+                        <p className="text-gray-600 cn-label-s mb-0">全館滿五百免運</p>
+                        <p className={`cn-label-s mb-0 ${isFreeShipping ? "text-success" : "text-gray-500"}`}>
+                          {isFreeShipping ? "🎉 已享免運" : `距離免運還差 NT.${amountToFree}`}
+                        </p>
+                      </li>
+                      <li className="d-flex justify-content-between ">
+                        <p className="text-primary cn-body-s-bold mb-0">合計</p>
+                        <p className="text-primary cn-body-s-regular mb-0">NT.{totalAmount}</p>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
                 <div className="d-flex flex-column flex-lg-row justify-content-end">
                   <button
