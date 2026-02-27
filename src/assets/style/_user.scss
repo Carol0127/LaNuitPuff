@@ -1,0 +1,9 @@
+.orderListImg {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+
+  @media (max-width: 768px) {
+    height: 158px;
+  }
+}

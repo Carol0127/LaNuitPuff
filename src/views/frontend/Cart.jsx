@@ -82,8 +82,11 @@ function Cart() {
                   >
                     清空購物車
                   </button>
-                  <NavLink to="/checkout">
-                    <button className="btn-puff btn-puff-primary btn-puff-cn-m w-auto">前往結帳</button>
+                  <NavLink
+                    className=" w-lg-auto"
+                    to="/checkout"
+                  >
+                    <button className="w-100 btn-puff btn-puff-primary btn-puff-cn-m">前往結帳</button>
                   </NavLink>
                 </div>
               </div>

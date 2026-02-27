@@ -120,3 +120,22 @@
     padding: 16px 40px;
   }
 }
+
+.btn-puff-favorite {
+  width: 36px;
+  height: 36px;
+  z-index: 5;
+  background-color: $blue-400;
+  color: $taupe-200;
+  &:hover:not(:disabled) {
+    background-color: $secondary;
+    color: $taupe-100;
+  }
+  @media (max-width: 768px) {
+    width: 20px;
+    height: 20px;
+    span {
+      font-size: 16px;
+    }
+  }
+}
