@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductsFilter from "../../components/ProductsFilter";
-import ProductNavigation from "../../components/ProductNavigation";
+import ProductNavigation from "../../components/Navigation";
 import ProductSort from "../../components/ProductsSort";
 import PopularCardSwiper from "../../components/PopularCardSwiper";
 import PuffSeriesSwiper from "../../components/PuffSeriesSwiper";
@@ -49,7 +49,12 @@ function Products() {
       <section className="productHero d-flex align-items-center container-fluid p-0">
         <div className="container">
           <div className="row">
-            <h1 className="eng-display-xl text-white">Product</h1>
+            <h1
+              data-aos="fade-down"
+              className="eng-display-xl text-white"
+            >
+              Product
+            </h1>
           </div>
         </div>
       </section>
@@ -130,7 +135,10 @@ function Products() {
           <button className="btn-puff btn-puff-primary btn-puff-eng-l eng-label-l">SHOP</button>
         </div>
 
-        <div className="row align-items-stretch  ">
+        <div
+          data-aos="fade-down"
+          className="row align-items-stretch "
+        >
           <PuffSeriesSwiper />
         </div>
       </section>

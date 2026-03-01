@@ -24,7 +24,12 @@ function Cart() {
           <section className="bg-taupe-200 mt-80 mt-lg-100 py-64 py-lg-80">
             <div className="container">
               <div className="row">
-                <h1 className="eng-display-xl text-primary mb-32">/ Your Cart</h1>
+                <h1
+                  data-aos="fade-right"
+                  className="eng-display-xl text-primary mb-32"
+                >
+                  / Your Cart
+                </h1>
                 <CartStep step={1} />
                 <CartTable
                   getCartData={() => dispatch(fetchCartAsync())}

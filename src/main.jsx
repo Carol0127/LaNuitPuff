@@ -7,11 +7,17 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Provider } from "react-redux";
 import { store } from "./store/store.js";
 import "sweetalert2/src/sweetalert2.scss";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init({
+  duration: 1200,
+  offset: 200,
+  once: true,
+});
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
-  </StrictMode>,
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>,
 );

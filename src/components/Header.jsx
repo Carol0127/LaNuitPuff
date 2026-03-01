@@ -1,49 +1,53 @@
-import { NavLink, useLocation, useNavigate } from "react-router";
+import { NavLink, useLocation } from "react-router";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCartAsync } from "../store/slices/cartSlice";
+import { useScroll } from "../hooks/scrollToHash";
 
 function Header() {
+  const { pathname } = useLocation();
+  const dispatch = useDispatch();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
+  const { scrollToAnchor } = useScroll();
   const isTransparentPage = pathname === "/" || pathname === "/Products";
+
   const closeMenu = () => {
     const closeBtn = document.querySelector("#offcanvasNavbar .btn-close");
     if (closeBtn) closeBtn.click();
   };
 
-  // 處理錨點捲動
-  const handleAnchorClick = (id) => {
-    if (pathname !== "/") {
-      navigate("/");
-      setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      }, 300);
-    } else {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    }
+  const handleNavClick = (id) => {
+    scrollToAnchor(id);
     closeMenu();
   };
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-
       if (pathname === "/") {
         const newsEl = document.getElementById("news");
         const contactEl = document.getElementById("contact");
-        const scrollPos = window.scrollY + 200;
-        if (contactEl && scrollPos >= contactEl.offsetTop) setActiveSection("contact");
-        else if (newsEl && scrollPos >= newsEl.offsetTop) setActiveSection("news");
-        else setActiveSection("");
+        const scrollPos = window.scrollY + 250;
+
+        if (contactEl && scrollPos >= contactEl.offsetTop) {
+          setActiveSection("contact");
+        } else if (newsEl && scrollPos >= newsEl.offsetTop) {
+          setActiveSection("news");
+        } else {
+          setActiveSection("");
+        }
       }
     };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    handleScroll(); // 初始化執行
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      setActiveSection(""); // 在這裡清空就不會觸發同步渲染報錯
+    };
   }, [pathname]);
 
   const { cartData } = useSelector((state) => state.cart);
@@ -64,7 +68,6 @@ function Header() {
           <NavLink
             className="navbar-brand me-auto p-0"
             to="/"
-            onClick={closeMenu}
           >
             <img
               src="https://github.com/Carol0127/LaNuitPuffProducts/blob/main/LOGO/logo%E6%AD%A3.png?raw=true"
@@ -98,12 +101,12 @@ function Header() {
               </li>
             </ul>
             <button
-              className="navbar-toggler border-0 p-0"
+              className="navbar-toggler text-taupe-200 border-0 p-0"
               type="button"
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasNavbar"
             >
-              <span className="navbar-toggler-icon"></span>
+              <span class="material-symbols-outlined">dehaze</span>
             </button>
           </div>
 
@@ -131,7 +134,7 @@ function Header() {
                       `nav-link eng-heading-h5 ${isActive && activeSection === "" ? "active" : ""}`
                     }
                     to="/"
-                    onClick={closeMenu}
+                    onClick={closeMenu()}
                   >
                     Home
                   </NavLink>
@@ -140,7 +143,7 @@ function Header() {
                   <NavLink
                     className="nav-link eng-heading-h5"
                     to="/About"
-                    onClick={closeMenu}
+                    onClick={closeMenu()}
                   >
                     About
                   </NavLink>
@@ -149,7 +152,7 @@ function Header() {
                   <NavLink
                     className="nav-link eng-heading-h5"
                     to="/Products"
-                    onClick={closeMenu}
+                    onClick={closeMenu()}
                   >
                     Shop
                   </NavLink>
@@ -159,7 +162,7 @@ function Header() {
                     className={`nav-link eng-heading-h5 w-100 bg-transparent border-0 ${
                       activeSection === "news" ? "active" : ""
                     }`}
-                    onClick={() => handleAnchorClick("news")}
+                    onClick={() => handleNavClick("news")}
                   >
                     News
                   </button>
@@ -169,7 +172,7 @@ function Header() {
                     className={`nav-link eng-heading-h5 w-100 bg-transparent border-0 ${
                       activeSection === "contact" ? "active" : ""
                     }`}
-                    onClick={() => handleAnchorClick("contact")}
+                    onClick={() => handleNavClick("contact")}
                   >
                     Contact
                   </button>

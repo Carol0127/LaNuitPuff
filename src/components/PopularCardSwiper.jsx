@@ -20,6 +20,7 @@ function PopularCardSwiper() {
   return (
     <>
       <Swiper
+        data-aos="fade-down"
         className="w-100"
         slidesPerView={1.2}
         spaceBetween={16}

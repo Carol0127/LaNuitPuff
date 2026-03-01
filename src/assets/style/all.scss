@@ -23,6 +23,7 @@
 @import "./components/cartTable";
 @import "./components/toast";
 @import "./components/formControl";
+@import "./components/navigationCustom";
 
 @import "./swiper/heroSwiper";
 @import "./swiper/brandSwiper";
@@ -36,3 +37,5 @@
 @import "./login";
 @import "./user";
 @import "./checkout";
+
+@import "./admin/adminOrders";

@@ -91,7 +91,12 @@ function Checkout() {
       <section className="bg-taupe-200 mt-80 mt-lg-100 py-64 py-lg-80">
         <div className="container">
           <div className="row  align-items-start">
-            <h1 className="eng-display-xl text-primary mb-32">/ Your Cart</h1>
+            <h1
+              data-aos="fade-right"
+              className="eng-display-xl text-primary mb-32"
+            >
+              / Checkout
+            </h1>
             <CartStep step={2} />
             <div className="col-lg-8">
               <form
@@ -373,7 +378,7 @@ function Checkout() {
             </div>
 
             <div
-              className="col-lg-4 sticky-lg-top d-none d-lg-block"
+              className="col-lg-4 sticky-top d-none d-lg-block"
               style={{ top: "124px" }}
             >
               <div className="p-24 bg-white border border-1">

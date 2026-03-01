@@ -1,25 +1,32 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
+import AOS from "aos";
 
-function ScrollToHash() {
-  const { hash, pathname } = useLocation();
+export function useScroll() {
+  const { pathname, hash } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (hash) {
-      const id = hash.replace("#", "");
-      const element = document.getElementById(id);
-
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 100);
-      }
-    } else {
+    if (!hash) {
       window.scrollTo(0, 0);
     }
-  }, [hash, pathname]);
+    setTimeout(() => {
+      AOS.refresh();
+    }, 100);
+  }, [pathname, hash]);
 
-  return null;
+  const scrollToAnchor = (id) => {
+    if (pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        el?.scrollIntoView({ behavior: "smooth" });
+      }, 500);
+    } else {
+      const el = document.getElementById(id);
+      el?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return { scrollToAnchor };
 }
-
-export default ScrollToHash;
