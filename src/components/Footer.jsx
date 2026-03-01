@@ -1,18 +1,22 @@
 import { NavLink } from "react-router";
+import { useScroll } from "../hooks/scrollToHash";
 
 function Footer() {
+  const { scrollToAnchor } = useScroll();
   return (
     <>
       <div className="bg-primary px-16 py-24 py-lg-40">
         <div className="container p-0">
           <div className="d-lg-flex justify-content-between align-items-center mb-40">
             <div className="mb-40 mb-lg-0 d-flex flex-column   align-items-center align-items-lg-start">
-              <img
-                src="https://github.com/Carol0127/LaNuitPuffProducts/blob/main/LOGO/logo%E6%A9%AB2.png?raw=true"
-                alt="LOGO"
-                style={{ width: "184px" }}
-                className="mb-20"
-              />
+              <NavLink to="/adminLogin">
+                <img
+                  src="https://github.com/Carol0127/LaNuitPuffProducts/blob/main/LOGO/logo%E6%A9%AB2.png?raw=true"
+                  alt="LOGO"
+                  style={{ width: "184px" }}
+                  className="mb-20"
+                />
+              </NavLink>
               <ul className="navbar-nav flex-row flex-wrap">
                 <li className="nav-item me-16">
                   <NavLink
@@ -31,12 +35,12 @@ function Footer() {
                   </NavLink>
                 </li>
                 <li className="nav-item me-16">
-                  <NavLink
-                    className="nav-link p-0 eng-heading-h5 text-white"
-                    to="/Contact"
+                  <button
+                    className="nav-link p-0 eng-heading-h5 text-white bg-transparent border-0"
+                    onClick={() => scrollToAnchor("contact")}
                   >
                     Contact
-                  </NavLink>
+                  </button>
                 </li>
                 <li className="nav-item">
                   <NavLink

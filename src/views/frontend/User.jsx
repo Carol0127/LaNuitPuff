@@ -1,6 +1,9 @@
-import { NavLink, Outlet, useNavigate } from "react-router";
+import { useEffect } from "react";
+import { NavLink, useLocation, Outlet, useNavigate } from "react-router";
+
 import { SuccessToast } from "../../components/Toast";
 import Swal from "sweetalert2";
+import AOS from "aos";
 
 function User() {
   const navigate = useNavigate();
@@ -36,6 +39,11 @@ function User() {
       }
     });
   };
+
+  const location = useLocation();
+  useEffect(() => {
+    AOS.refresh();
+  }, [location.pathname]);
   return (
     <>
       <section className="bg-taupe-200 py-64 mt-64 py-lg-120 mt-lg-80">
@@ -118,7 +126,13 @@ function User() {
                   </div>
                 </div>
               </div>
-              <Outlet />
+              <div
+                key={location.pathname}
+                data-aos="fade-right"
+                data-aos-duration="800"
+              >
+                <Outlet />
+              </div>
             </div>
           </div>
         </div>

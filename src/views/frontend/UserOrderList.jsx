@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { getOrders } from "../../services/cart";
+import Navigation from "../../components/Navigation";
 function UserOrderList() {
   const [orders, setOrders] = useState([]);
+  // 新增分頁狀態
+  const [pagination, setPagination] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
 
   // 將時間戳轉換為 YYYY/MM/DD
   const formatDate = (timestamp) => {
@@ -19,13 +23,14 @@ function UserOrderList() {
 
   useEffect(() => {
     const fetchOrderData = async () => {
-      const res = await getOrders();
+      const res = await getOrders(currentPage);
       if (res?.success) {
         setOrders(res.orders);
+        setPagination(res.pagination);
       }
     };
     fetchOrderData();
-  }, []);
+  }, [currentPage]);
   return (
     <>
       <div>
@@ -105,6 +110,10 @@ function UserOrderList() {
             </div>
           );
         })}
+        <Navigation
+          pagination={pagination}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </>
   );

@@ -86,9 +86,9 @@ export const payOrder = async (id) => {
 };
 
 // 訂單資料
-export const getOrders = async () => {
+export const getOrders = async (page = 1) => {
   try {
-    const res = await api.get(`/api/${VITE_API_PATH}/orders`);
+    const res = await api.get(`/api/${VITE_API_PATH}/orders?page=${page}`);
     return res.data;
   } catch (error) {
     return error.response?.data;

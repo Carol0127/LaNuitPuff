@@ -40,3 +40,16 @@ export const ErrorToast = Swal.mixin({
     timerProgressBar: "lanuit-toast-progress",
   },
 });
+
+// 3.刪除彈跳模板
+export const ConfirmDeleteModal = Swal.mixin({
+  title: "確定要刪除嗎？",
+  text: "刪除後將無法還原！",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#D64545",
+  cancelButtonColor: "#6c757d",
+  confirmButtonText: "確定刪除",
+  cancelButtonText: "取消",
+  reverseButtons: true,
+});
