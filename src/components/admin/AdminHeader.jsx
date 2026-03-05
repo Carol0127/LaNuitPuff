@@ -77,7 +77,7 @@ function AdminHeader() {
                 <li className="nav-item">
                   <NavLink
                     className="nav-link cn-label-l text-taupe-200"
-                    to="/Products"
+                    to="/admin/products"
                   >
                     <div className="d-flex align-items-center">
                       <span className="material-symbols-outlined align-bottom me-8">chef_hat</span>
@@ -88,7 +88,7 @@ function AdminHeader() {
                 <li className="nav-item">
                   <NavLink
                     className="nav-link cn-label-l text-taupe-200"
-                    to="/Products"
+                    to="/admin/news"
                   >
                     <div className="d-flex align-items-center">
                       <span className="material-symbols-outlined align-bottom me-8">notifications</span>

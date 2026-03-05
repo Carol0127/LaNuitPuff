@@ -31,8 +31,11 @@ function AdminIndex() {
     })
     .reduce((sum, order) => sum + (order.total || 0), 0);
 
-  // 2. 待處理訂單 (未付款)
-  const pendingCount = orders.filter((order) => !order.is_paid).length;
+  // 2. 待處理訂單 (待烘焙)
+  const pendingCount = orders.filter((order) => {
+    const status = order.status || "待烘焙";
+    return status === "待烘焙";
+  }).length;
 
   // 3. 近期訂單活動
   const recentOrders = orders.slice(0, 5);
@@ -56,7 +59,7 @@ function AdminIndex() {
             <div className="col-lg-4 mb-24 mb-lg-0">
               <div className="bg-white border px-20 py-28 h-100">
                 <span className="material-symbols-outlined align-bottom text-primary mb-12">package_2</span>
-                <p className="text-primary cn-heading-h5 mb-12">待處理訂單</p>
+                <p className="text-primary cn-heading-h5 mb-12">待烘焙訂單</p>
                 <p className="text-info cn-body-l-bold mb-12">{pendingCount}筆</p>
                 <p className="text-info cn-label-s">需優先處理</p>
               </div>
@@ -92,8 +95,11 @@ function AdminIndex() {
                       className="mb-24"
                       key={order.id}
                     >
+                      <p className="badge rounded-0 bg-primary cn-label-s mb-8">{order.status || "待烘焙"}</p>
+
                       <p className="text-primary cn-body-s-regular mb-8">{order.user?.name} 下單了</p>
-                      <p className="text-primary cn-body-s-regular mb-8">{order.id}</p>
+
+                      <p className="text-primary cn-body-s-regular mb-8">ID: {order.id}</p>
                       <p className="text-gray-500 cn-label-s">
                         {new Date(order.create_at * 1000).toLocaleDateString()}
                       </p>

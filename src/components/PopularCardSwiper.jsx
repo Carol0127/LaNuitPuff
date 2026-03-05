@@ -67,7 +67,7 @@ function PopularCardSwiper() {
                 </div>
 
                 <div className="card-body bg-taupe-200 py-20 px-16">
-                  <p className="eng-label-s text-blue-400 mb-8">/ Comforting Hug</p>
+                  <p className="eng-label-s text-blue-400 mb-8">/ {item.category_eng}</p>
                   <div className="d-flex align-items-center justify-content-between mb-8">
                     <p className="cn-heading-h5 text-primary mb-0">{item.title}</p>
                     <p className="eng-heading-h5 text-primary mb-0">NT.{item.price}</p>

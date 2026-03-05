@@ -2,7 +2,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { delAllOrder, delOrder, editOrder } from "../../services/admin";
 import { useForm } from "react-hook-form";
 
-import Swal from "sweetalert2";
 import { ConfirmDeleteModal, ErrorToast, SuccessToast } from "../../components/Toast";
 import * as bootstrap from "bootstrap";
 import EditModal from "../../components/admin/EditModal";
@@ -129,6 +128,13 @@ function AdminOrders() {
 
     return result;
   }, [orders, currentTab, searchTerm]);
+
+  const shouldShowNavigation = useMemo(() => {
+    if (pagination.total_pages <= 1) return false;
+    if (filteredOrders.length === 0) return false;
+
+    return true;
+  }, [pagination.total_pages, filteredOrders.length]);
 
   return (
     <>
@@ -260,15 +266,20 @@ function AdminOrders() {
                 </ul>
               </div>
             </div>
-            <div className="d-flex justify-content-between">
-              <Navigation
-                pagination={pagination}
-                setCurrentPage={setCurrentPage}
-              />
+            <div className="d-flex justify-content-between align-items-center">
+              {shouldShowNavigation ? (
+                <Navigation
+                  pagination={pagination}
+                  setCurrentPage={setCurrentPage}
+                />
+              ) : (
+                <div />
+              )}
+
               <button
                 type="button"
                 className="btn-puff btn-puff-outline btn-puff-cn-m cn-label-m"
-                onClick={() => handleAllDel()}
+                onClick={handleAllDel}
               >
                 全部刪除
               </button>

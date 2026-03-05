@@ -18,6 +18,8 @@ import UserFavorite from "./views/frontend/UserFavorite";
 import AdminLogin from "./views/admin/AdminLogin";
 import AdminIndex from "./views/admin/AdminIndex";
 import AdminOrders from "./views/admin/AdminOrders";
+import AdminProducts from "./views/admin/AdminProducts";
+import AdminNews from "./views/admin/AdminNews";
 
 export const router = createHashRouter([
   {
@@ -99,6 +101,14 @@ export const router = createHashRouter([
       {
         path: "orders",
         element: <AdminOrders />,
+      },
+      {
+        path: "products",
+        element: <AdminProducts />,
+      },
+      {
+        path: "news",
+        element: <AdminNews />,
       },
     ],
   },

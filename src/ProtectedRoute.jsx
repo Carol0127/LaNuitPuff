@@ -30,10 +30,11 @@ export const PublicRoute = ({ children }) => {
 export const ProtectedAdminRoute = ({ children }) => {
   const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, "$1");
 
+  // 如果沒有 token，踢回登入頁
   if (!token) {
     return (
       <Navigate
-        to="/admin-login"
+        to="/adminLogin"
         replace
       />
     );

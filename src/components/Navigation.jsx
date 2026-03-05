@@ -1,4 +1,6 @@
 function Navigation({ pagination, setCurrentPage }) {
+  const totalPages = pagination?.total_pages || 0;
+  if (totalPages <= 0) return null;
   return (
     <>
       <nav className=" d-flex justify-content-end justify-content-lg-center">
