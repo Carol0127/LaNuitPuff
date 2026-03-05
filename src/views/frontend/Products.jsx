@@ -102,13 +102,13 @@ function Products() {
 
                   <div className="card-body bg-primary py-20 px-16 flex-grow-1 d-flex flex-column justify-content-between">
                     <div>
-                      <p className="eng-label-m text-blue-300 mb-8">/ {item.category}</p>
+                      <p className="eng-label-m text-blue-300 mb-8">/ {item.category_eng}</p>
                       <div className="d-lg-flex align-items-center justify-content-between mb-8">
                         <p className="cn-heading-h5 text-taupe-200 mb-12 mb-lg-0">{item.title}</p>
                         <p className="eng-heading-h5 text-taupe-200 mb-12 mb-lg-0">NT.{item.price}</p>
                       </div>
                     </div>
-                    <p className="eng-label-m text-taupe-200 mb-0">Silence at 3 AM</p>
+                    <p className="eng-label-m text-taupe-200 mb-0">{item.title_eng}</p>
                   </div>
                 </div>
               </div>

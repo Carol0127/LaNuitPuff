@@ -6,12 +6,10 @@ function AdminCheckLoading() {
         style={{ transition: "opacity 0.3s" }}
       >
         <div className="text-center">
-          {/* 品牌 Logo 或 文字 */}
           <h2 className="eng-heading-h2 text-primary mb-4 animate__animated animate__pulse animate__infinite">
             La Nuit Puff
           </h2>
 
-          {/* 質感 Spinner */}
           <div className="d-flex align-items-center justify-content-center mb-3">
             <div
               className="spinner-grow text-primary"
@@ -30,7 +28,6 @@ function AdminCheckLoading() {
             ></div>
           </div>
 
-          {/* 提示文字 */}
           <p
             className="cn-label-m text-gray-600 tracking-widest"
             style={{ letterSpacing: "2px" }}

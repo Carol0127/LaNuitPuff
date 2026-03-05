@@ -82,7 +82,7 @@ function ProductDetail() {
               </ol>
             </nav>
             <div className="mb-24 mb-lg-0">
-              <p className="eng-label-m text-primary mb-4">{product.category}</p>
+              <p className="eng-label-m text-primary mb-4">/ {product.category_eng}</p>
               <div className="d-flex align-items-center justify-content-between">
                 <h1 className="cn-heading-h1 text-primary ">{product.title}</h1>
                 <button className="btn border-0">

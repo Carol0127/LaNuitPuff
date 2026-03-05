@@ -68,6 +68,29 @@
   }
 }
 
+.btn-puff-outline-danger {
+  border-color: $danger;
+  color: $danger;
+  background-color: transparent;
+
+  &:hover:not(:disabled) {
+    border-color: $danger;
+    background-color: $danger;
+    color: $taupe-100;
+  }
+
+  &.active {
+    background-color: $danger;
+    color: $taupe-100;
+    border-color: $danger;
+  }
+
+  &:disabled {
+    border-color: $blue-300;
+    color: $blue-300;
+  }
+}
+
 // Yellow
 .btn-puff-yellow {
   background-color: $secondary;
