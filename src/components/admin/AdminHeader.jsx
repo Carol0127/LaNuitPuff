@@ -1,6 +1,45 @@
-import { NavLink } from "react-router";
-
+import { NavLink, useNavigate } from "react-router"; // 1. 引入 useNavigate
+import { SuccessToast } from "../Toast";
+import Swal from "sweetalert2";
 function AdminHeader() {
+  const navigate = useNavigate(); // 2. 取得導航功能
+
+  const handleLogout = () => {
+    Swal.fire({
+      title: "確定要登出嗎？",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#4A3B31", // 妳指定的 Primary 深色
+      cancelButtonColor: "#9E9E9E",
+      confirmButtonText: "是的，登出",
+      cancelButtonText: "先不要",
+      customClass: {
+        title: "cn-heading-h4",
+        htmlContainer: "cn-body-m-regular",
+        confirmButton: "btn-puff-primary", // 確保妳的 CSS 有這個 class
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // 1. 清除 LocalStorage 與 SessionStorage
+        localStorage.clear();
+        sessionStorage.clear();
+
+        // 2. 重要：清除後台專用的 hexToken Cookie
+        // 沒清這行，ProtectedAdminRoute 就不會把妳踢出去
+        document.cookie = "hexToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+        // 3. 顯示成功提示
+        SuccessToast.fire({
+          icon: "success",
+          title: "已安全登出",
+        });
+
+        // 4. 跳轉回後台登入頁
+        // 既然是後台登出，建議導向 /adminLogin，確保流程一致
+        navigate("/adminLogin");
+      }
+    });
+  };
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-primary p-0 fixed-top transition-navbar">
@@ -14,16 +53,12 @@ function AdminHeader() {
           </NavLink>
 
           <div className="d-flex align-items-center order-lg-3">
-            <ul className="navbar-nav flex-row">
-              <li>
-                <NavLink
-                  className="nav-link me-20 me-lg-0 text-taupe-200"
-                  to="/"
-                >
-                  <span className="material-symbols-outlined align-bottom">logout</span>
-                </NavLink>
-              </li>
-            </ul>
+            <button
+              className="nav-link me-20 me-lg-0 text-taupe-200"
+              onClick={handleLogout}
+            >
+              <span className="material-symbols-outlined align-bottom">logout</span>
+            </button>
             <button
               className="navbar-toggler text-taupe-200 border-0 p-0"
               type="button"
@@ -99,7 +134,7 @@ function AdminHeader() {
                 <li className="nav-item">
                   <NavLink
                     className="nav-link cn-label-l text-taupe-200"
-                    to="/Products"
+                    to="/admin/articles"
                   >
                     <div className="d-flex align-items-center">
                       <span className="material-symbols-outlined align-bottom me-8">edit</span>

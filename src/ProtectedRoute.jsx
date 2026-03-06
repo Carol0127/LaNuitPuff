@@ -1,6 +1,6 @@
 import { Navigate } from "react-router";
 
-// 使用者登入
+// 1. 使用者登入
 export const ProtectedRoute = ({ children }) => {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   return isLoggedIn ? (
@@ -13,7 +13,7 @@ export const ProtectedRoute = ({ children }) => {
   );
 };
 
-// 登入後不能去登入頁
+// 2. 登入後不能去登入頁
 export const PublicRoute = ({ children }) => {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   return isLoggedIn ? (
@@ -26,7 +26,7 @@ export const PublicRoute = ({ children }) => {
   );
 };
 
-// 後臺登入
+// 3. 後臺登入
 export const ProtectedAdminRoute = ({ children }) => {
   const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, "$1");
 

@@ -1,7 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
-
-import "swiper/css";
+import { Pagination, Autoplay, EffectFade } from "swiper/modules";
+import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 
@@ -10,7 +9,9 @@ function HeroSwiper() {
     <div className="hero-swiper-container">
       <Swiper
         pagination={{ clickable: true }}
-        modules={[Pagination, Autoplay]}
+        modules={[Pagination, Autoplay, EffectFade]}
+        effect="fade" // 開啟淡入淡出特效
+        speed={800}
         className="HeroSwiper"
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         loop={true}

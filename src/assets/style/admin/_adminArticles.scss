@@ -1,0 +1,51 @@
+.articlesImg {
+  width: 159px;
+  height: 179px;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 120px;
+  }
+}
+
+.text-truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 在妳的 index.scss 或 AdminArticles.scss 加入 */
+.ck-editor__editable_inline {
+  min-height: 400px; /* 確保有高度 */
+  border: 1px solid #ccced1 !important; /* 確保邊框看得見 */
+  background-color: white;
+}
+
+/* 針對妳提到的銳角美學，移除圓角 */
+.ck.ck-editor__main > .ck-editor__editable {
+  border-radius: 0 !important;
+}
+.ck.ck-toolbar {
+  border-radius: 0 !important;
+}
+
+/* 針對編輯器內部的文字行高進行調整 */
+.ck-content {
+  line-height: 1.8 !important; /* 建議設在 1.6 ~ 1.8 之間，長文讀起來最舒服 */
+  letter-spacing: 0.05em; /* 稍微增加字距，更有精品設計感 */
+}
+
+/* 確保編輯器有足夠的高度，不會因為內容多就擠在一起 */
+.ck-editor__editable_inline {
+  min-height: 400px;
+  padding: 20px 40px !important; /* 增加左右留白，模擬雜誌排版感 */
+}
+
+.ck-content h2,
+.ck-content h3 {
+  margin-top: 2.5rem !important;
+  margin-bottom: 1rem !important;
+  font-weight: 600;
+  color: #1a1a1a; /* 妳的 Primary 顏色 */
+}

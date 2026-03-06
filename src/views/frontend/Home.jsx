@@ -17,7 +17,10 @@ function Home() {
         </section>
         <section className="container-fluid px-0 py-64 py-lg-120 bg-taupe-200 ">
           <div className="row g-0 align-items-center">
-            <div className="col-lg-7">
+            <div
+              data-aos="fade-right"
+              className="col-lg-7"
+            >
               <Swiper
                 slidesPerView={1.5}
                 spaceBetween={24}
@@ -79,25 +82,28 @@ function Home() {
             </div>
           </div>
         </section>
-        <section
-          data-aos="fade-right"
-          className="container py-64 py-lg-120"
-        >
+        <section className="container py-64 py-lg-120">
           <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-32 ">
             <h2 className="eng-display-xl text-primary mb-24 m-lg-0">Our Puffs</h2>
             <button className="btn-puff btn-puff-primary btn-puff-eng-l eng-label-l">SHOP</button>
           </div>
 
-          <div className="row align-items-stretch ">
+          <div
+            data-aos="fade-down"
+            className="row align-items-stretch "
+          >
             <PuffSeriesSwiper />
           </div>
         </section>
         <section className="section-popular py-64 py-lg-80 pe-0">
-          <div className="container pe-0">
+          <div
+            data-aos="fade-down"
+            className="container pe-0"
+          >
             <div className="row me-0">
               <h2 className="text-center text-lg-start eng-display-xl text-primary mb-40 mb-lg-56">Popular</h2>
             </div>
-            <div data-aos="zoom-in">
+            <div>
               <PopularCardSwiper />
             </div>
           </div>
@@ -171,14 +177,12 @@ function Home() {
         </section>
         <section
           id="news"
-          data-aos="fade-down"
           className="container-fluid p-0 "
         >
           <NewSwiper />
         </section>
         <section
           id="contact"
-          data-aos="fade-left"
           className="container-fluid pt-80 pt-lg-120 position-relative"
         >
           <div className="row d-flex align-items-end justify-content-end">
@@ -188,12 +192,15 @@ function Home() {
                   src="https://github.com/Carol0127/LaNuitPuffProducts/blob/main/banner/ver.4/lanuit-1770553966402.jpg?raw=true"
                   alt="Contact Banner"
                   className="d-block contactBanner"
+                  data-aos="fade-left"
+                  data-aos-delay="800"
                 />
 
                 <img
                   src="https://github.com/Carol0127/LaNuitPuffProducts/blob/main/SHOP/lanuit-1769934311571.jpg?raw=true"
                   alt="Shop Detail"
                   className="position-absolute top-100 start-80 translate-middle  d-none d-xl-block shopDetail"
+                  data-aos="fade-down"
                 />
               </div>
               <div className="d-flex flex-column align-items-center align-items-lg-start py-28 ps-lg-4">

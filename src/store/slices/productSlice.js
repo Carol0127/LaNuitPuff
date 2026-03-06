@@ -26,15 +26,17 @@ const productSlice = createSlice({
 export const { setProductsData, sortProducts } = productSlice.actions;
 export default productSlice.reducer;
 
-export const fetchProductsAsync = createAsyncThunk("product/fetchProducts", async (arg, { dispatch }) => {
-  try {
-    const { page = 1, category = "" } = arg || {};
-    const res = await getProducts(page, category);
+export const fetchProductsAsync = createAsyncThunk(
+  "product/fetchProducts",
+  async ({ page = 1, category = "" }, { dispatch }) => {
+    try {
+      const res = await getProducts(page, category);
 
-    if (res.success) {
-      dispatch(setProductsData(res));
+      if (res.success) {
+        dispatch(setProductsData(res));
+      }
+    } catch (error) {
+      console.error("抓取商品失敗", error);
     }
-  } catch (error) {
-    console.error("抓取商品失敗", error);
-  }
-});
+  },
+);
