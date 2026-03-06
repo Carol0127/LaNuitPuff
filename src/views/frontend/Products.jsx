@@ -49,19 +49,17 @@ function Products() {
       <section className="productHero d-flex align-items-center container-fluid p-0">
         <div className="container">
           <div className="row">
-            <h1
-              data-aos="fade-down"
-              className="eng-display-xl text-white"
-            >
-              Product
-            </h1>
+            <h1 className="eng-display-xl text-white">Product</h1>
           </div>
         </div>
       </section>
       <section className=" py-lg-120 py-64 bg-taupe-200">
         <div className="container">
           <div className="row gy-16 gy-lg-24">
-            <div className="d-flex flex-column ">
+            <div
+              data-aos="fade-down"
+              className="d-flex flex-column "
+            >
               <h3 className="eng-display-xl text-primary text-center mb-16 mb-lg-24">The Full Collection</h3>
 
               <div className="d-flex justify-content-between align-items-center">

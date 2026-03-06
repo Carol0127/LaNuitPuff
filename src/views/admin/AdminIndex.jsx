@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getOrders } from "../../services/admin";
+import AdminOrderChart from "../../components/admin/AdminOrderChart";
 
 function AdminIndex() {
   const [orders, setOrders] = useState([]);
@@ -42,7 +43,7 @@ function AdminIndex() {
 
   return (
     <>
-      <section className="bg-taupe-200 py-64 mt-80">
+      <section className="bg-taupe-200 py-32 py-lg-64 mt-80">
         <div className="container mb-40 mb-lg-48">
           <div className="row">
             <h1 className="cn-heading-h4 text-primary mb-28">/ 數據概覽</h1>
@@ -79,11 +80,7 @@ function AdminIndex() {
             <div className="col-lg-9 mb-40 mb-lg-0">
               <h2 className="cn-heading-h4 text-primary mb-28">/ 銷售圖表</h2>
               <div className="border bg-white p-24">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam repellat ratione repellendus
-                  tenetur, nostrum aut. Aliquam aspernatur officiis, fugit iste eveniet nostrum fuga quasi modi eaque
-                  molestias ad commodi saepe.
-                </p>
+                <AdminOrderChart orders={orders} />
               </div>
             </div>
             <div className="col-lg-3 mb-40 mb-lg-0">
@@ -99,7 +96,7 @@ function AdminIndex() {
 
                       <p className="text-primary cn-body-s-regular mb-8">{order.user?.name} 下單了</p>
 
-                      <p className="text-primary cn-body-s-regular mb-8">ID: {order.id}</p>
+                      <p className="text-primary cn-body-s-regular mb-8 text-break">ID: {order.id}</p>
                       <p className="text-gray-500 cn-label-s">
                         {new Date(order.create_at * 1000).toLocaleDateString()}
                       </p>

@@ -2,14 +2,14 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Modal } from "bootstrap";
 import { addArticle, delArticle, editArticle, getArticles, uploadImg } from "../../services/admin";
 import { ConfirmDeleteModal, ErrorToast, SuccessToast } from "../../components/Toast";
-import { useImageUpload } from "../../hooks/useImageUpload"; // 1. 引入 Hook
+import { useImageUpload } from "../../hooks/useImageUpload";
 import AdminNewsModal from "../../components/admin/AdminNewsModal";
 import Navigation from "../../components/Navigation";
 
 function AdminNews() {
   const [news, setNews] = useState([]);
-  const [pagination, setPagination] = useState({}); // 新增：存放分頁資訊
-  const [currentPage, setCurrentPage] = useState(1); // 新增：目前頁碼
+  const [pagination, setPagination] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
   const [modalMode, setModalMode] = useState("create");
   const [tempNews, setTempNews] = useState({ title: "", image: "", content: "" });
   const { handleUpload, isUploading } = useImageUpload(uploadImg);
@@ -148,8 +148,8 @@ function AdminNews() {
 
   return (
     <>
-      <section className="bg-taupe-200 py-64 mt-80">
-        <div className="container mb-40 mb-lg-48">
+      <section className="bg-taupe-200 py-32 py-lg-64 mt-80">
+        <div className="container">
           <div className="row">
             <div className="col-12 mb-28">
               <div className="justify-content-between align-items-center d-flex">

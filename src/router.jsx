@@ -20,6 +20,7 @@ import AdminIndex from "./views/admin/AdminIndex";
 import AdminOrders from "./views/admin/AdminOrders";
 import AdminProducts from "./views/admin/AdminProducts";
 import AdminNews from "./views/admin/AdminNews";
+import AdminArticles from "./views/admin/AdminArticles";
 
 export const router = createHashRouter([
   {
@@ -109,6 +110,10 @@ export const router = createHashRouter([
       {
         path: "news",
         element: <AdminNews />,
+      },
+      {
+        path: "articles",
+        element: <AdminArticles />,
       },
     ],
   },

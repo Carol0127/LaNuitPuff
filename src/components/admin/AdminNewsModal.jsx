@@ -19,7 +19,7 @@ function AdminNewsModal({
       >
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header bg-primary">
+            <div className={`modal-header ${modalMode === "create" ? "bg-secondary" : "bg-primary"}`}>
               <h5
                 className="modal-title text-taupe-200"
                 id="exampleModalLabel"
