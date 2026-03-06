@@ -193,7 +193,7 @@ function Home() {
                   alt="Contact Banner"
                   className="d-block contactBanner"
                   data-aos="fade-left"
-                  data-aos-delay="800"
+                  data-aos-delay="700"
                 />
 
                 <img
@@ -201,6 +201,7 @@ function Home() {
                   alt="Shop Detail"
                   className="position-absolute top-100 start-80 translate-middle  d-none d-xl-block shopDetail"
                   data-aos="fade-down"
+                  data-aos-delay="800"
                 />
               </div>
               <div className="d-flex flex-column align-items-center align-items-lg-start py-28 ps-lg-4">
