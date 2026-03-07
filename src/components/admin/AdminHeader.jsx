@@ -1,9 +1,10 @@
-import { NavLink, useNavigate } from "react-router"; // 1. 引入 useNavigate
+import { NavLink, useNavigate } from "react-router";
 import { SuccessToast } from "../Toast";
 import Swal from "sweetalert2";
-function AdminHeader() {
-  const navigate = useNavigate(); // 2. 取得導航功能
+import { Offcanvas } from "bootstrap";
 
+function AdminHeader() {
+  const navigate = useNavigate();
   const handleLogout = () => {
     Swal.fire({
       title: "確定要登出嗎？",
@@ -20,25 +21,23 @@ function AdminHeader() {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        // 1. 清除 LocalStorage 與 SessionStorage
         localStorage.clear();
         sessionStorage.clear();
 
-        // 2. 重要：清除後台專用的 hexToken Cookie
-        // 沒清這行，ProtectedAdminRoute 就不會把妳踢出去
         document.cookie = "hexToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
-        // 3. 顯示成功提示
         SuccessToast.fire({
           icon: "success",
           title: "已安全登出",
         });
 
-        // 4. 跳轉回後台登入頁
-        // 既然是後台登出，建議導向 /adminLogin，確保流程一致
         navigate("/adminLogin");
       }
     });
+  };
+  const closeOffcanvas = () => {
+    const closeBtn = document.querySelector("#offcanvasNavbar .btn-close");
+    if (closeBtn) closeBtn.click();
   };
   return (
     <>
@@ -91,6 +90,7 @@ function AdminHeader() {
                   <NavLink
                     className="nav-link cn-label-l text-taupe-200"
                     to="/admin"
+                    onClick={closeOffcanvas}
                   >
                     <div className="d-flex align-items-center">
                       <span className="material-symbols-outlined align-bottom me-8">dashboard</span>
@@ -102,6 +102,7 @@ function AdminHeader() {
                   <NavLink
                     className="nav-link cn-label-l text-taupe-200"
                     to="/admin/orders"
+                    onClick={closeOffcanvas}
                   >
                     <div className="d-flex align-items-center">
                       <span className="material-symbols-outlined align-bottom me-8">event_list</span>
@@ -113,6 +114,7 @@ function AdminHeader() {
                   <NavLink
                     className="nav-link cn-label-l text-taupe-200"
                     to="/admin/products"
+                    onClick={closeOffcanvas}
                   >
                     <div className="d-flex align-items-center">
                       <span className="material-symbols-outlined align-bottom me-8">chef_hat</span>
@@ -124,6 +126,7 @@ function AdminHeader() {
                   <NavLink
                     className="nav-link cn-label-l text-taupe-200"
                     to="/admin/news"
+                    onClick={closeOffcanvas}
                   >
                     <div className="d-flex align-items-center">
                       <span className="material-symbols-outlined align-bottom me-8">notifications</span>
@@ -135,6 +138,7 @@ function AdminHeader() {
                   <NavLink
                     className="nav-link cn-label-l text-taupe-200"
                     to="/admin/articles"
+                    onClick={closeOffcanvas}
                   >
                     <div className="d-flex align-items-center">
                       <span className="material-symbols-outlined align-bottom me-8">edit</span>
