@@ -1,4 +1,15 @@
+import { useEffect, useState } from "react";
+
 function CheckouTotalsMobile({ cartData, subtotal, isFreeShipping, shippingCharge, amountToFree, totalAmount }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const offcanvasEl = document.getElementById("mobileCartDetails");
+    if (!offcanvasEl) return;
+
+    offcanvasEl.addEventListener("show.bs.offcanvas", () => setIsOpen(true));
+    offcanvasEl.addEventListener("hide.bs.offcanvas", () => setIsOpen(false));
+  }, []);
   return (
     <>
       <div
@@ -67,7 +78,7 @@ function CheckouTotalsMobile({ cartData, subtotal, isFreeShipping, shippingCharg
               >
                 <div className="d-flex align-items-center mb-8">
                   <span className="cn-body-m-bold me-8">合計 NT.{totalAmount}</span>
-                  <span className="material-symbols-outlined fs-6">expand_less</span>
+                  <span className="material-symbols-outlined fs-6">{isOpen ? "expand_more" : "expand_less"}</span>
                 </div>
                 <p className="cn-label-m text-blue-300 mb-0">
                   {isFreeShipping ? "🎉 已享免運" : `距離免運還差 NT.${amountToFree}`}

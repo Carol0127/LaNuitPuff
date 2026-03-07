@@ -61,7 +61,7 @@ function AdminLogin() {
         <div className="container">
           <div className="row justify-content-center align-items-center vh-100">
             <div className="col-lg-4">
-              <div className="bg-white border px-lg-28 py-lg-40 mb-20">
+              <div className="bg-white border px-28 py-40 mb-20">
                 <div className="mb-40">
                   <h1 className="text-primary eng-heading-h2 mb-8 text-center">La Nuit Puff</h1>
                   <p className="text-gray-800 cn-body-m-regular text-center">店家後台管理</p>
