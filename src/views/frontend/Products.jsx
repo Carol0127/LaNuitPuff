@@ -56,10 +56,7 @@ function Products() {
       <section className=" py-lg-120 py-64 bg-taupe-200">
         <div className="container">
           <div className="row gy-16 gy-lg-24">
-            <div
-              data-aos="fade-down"
-              className="d-flex flex-column "
-            >
+            <div className="d-flex flex-column ">
               <h3 className="eng-display-xl text-primary text-center mb-16 mb-lg-24">The Full Collection</h3>
 
               <div className="d-flex justify-content-between align-items-center">
