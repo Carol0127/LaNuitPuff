@@ -41,7 +41,7 @@ function AdminHeader() {
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-primary p-0 fixed-top transition-navbar">
+      <nav className="navbar  navbar-dark navbar-expand-lg bg-primary p-0 fixed-top transition-navbar">
         <div className="container px-16 py-12 py-lg-20">
           <NavLink
             className="navbar-brand me-auto p-0"
@@ -88,8 +88,9 @@ function AdminHeader() {
               >
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link cn-label-l text-taupe-200"
+                    className="nav-link cn-label-l "
                     to="/admin"
+                    end
                     onClick={closeOffcanvas}
                   >
                     <div className="d-flex align-items-center">
@@ -100,7 +101,7 @@ function AdminHeader() {
                 </li>
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link cn-label-l text-taupe-200"
+                    className="nav-link cn-label-l "
                     to="/admin/orders"
                     onClick={closeOffcanvas}
                   >
@@ -112,7 +113,7 @@ function AdminHeader() {
                 </li>
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link cn-label-l text-taupe-200"
+                    className="nav-link cn-label-l "
                     to="/admin/products"
                     onClick={closeOffcanvas}
                   >
@@ -124,7 +125,7 @@ function AdminHeader() {
                 </li>
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link cn-label-l text-taupe-200"
+                    className="nav-link cn-label-l "
                     to="/admin/news"
                     onClick={closeOffcanvas}
                   >
@@ -136,7 +137,7 @@ function AdminHeader() {
                 </li>
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link cn-label-l text-taupe-200"
+                    className="nav-link cn-label-l "
                     to="/admin/articles"
                     onClick={closeOffcanvas}
                   >

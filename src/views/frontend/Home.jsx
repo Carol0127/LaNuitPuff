@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import HeroSwiper from "../../components/HeroSwiper";
@@ -9,6 +9,7 @@ import PuffFeatures from "../../components/PuffFeatures";
 import Contact from "../../components/Contact";
 
 function Home() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="overflow-hidden">
@@ -87,7 +88,12 @@ function Home() {
         <section className="container py-64 py-lg-120">
           <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-32 ">
             <h2 className="eng-display-xl text-primary mb-24 m-lg-0">Our Puffs</h2>
-            <button className="btn-puff btn-puff-primary btn-puff-eng-l eng-label-l">SHOP</button>
+            <button
+              className="btn-puff btn-puff-primary btn-puff-eng-l eng-label-l"
+              onClick={() => navigate("/products")}
+            >
+              SHOP
+            </button>
           </div>
 
           <div

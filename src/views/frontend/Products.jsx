@@ -127,7 +127,12 @@ function Products() {
       <section className="container py-64 py-lg-120">
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-32 ">
           <h2 className="eng-display-xl text-primary mb-24 m-lg-0">Our Puffs</h2>
-          <button className="btn-puff btn-puff-primary btn-puff-eng-l eng-label-l">SHOP</button>
+          <button
+            className="btn-puff btn-puff-primary btn-puff-eng-l eng-label-l"
+            onClick={() => navigate("/products")}
+          >
+            SHOP
+          </button>
         </div>
 
         <div

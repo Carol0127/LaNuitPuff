@@ -3,8 +3,11 @@ import PuffSeriesSwiper from "../../components/PuffSeriesSwiper";
 
 import Contact from "../../components/Contact";
 import Articles from "../../components/Articles";
+import { useNavigate } from "react-router";
 
 function About() {
+  const navigate = useNavigate();
+
   const gridData = [
     { engLabel: "/ Founded", number: "2020", content: "創立於台北" },
     { engLabel: "/ Flavours", number: "12+", content: "經典口味" },
@@ -151,7 +154,12 @@ function About() {
         <div className="container">
           <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-32 ">
             <h2 className="eng-display-xl text-primary mb-24 m-lg-0">Our Puffs</h2>
-            <button className="btn-puff btn-puff-primary btn-puff-eng-l eng-label-l">SHOP</button>
+            <button
+              className="btn-puff btn-puff-primary btn-puff-eng-l eng-label-l"
+              onClick={() => navigate("/products")}
+            >
+              SHOP
+            </button>
           </div>
 
           <div
