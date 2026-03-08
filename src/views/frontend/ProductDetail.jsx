@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router";
+import { NavLink, useNavigate, useParams } from "react-router";
 import { getProductById } from "../../services/products";
 
 import QtyInput from "../../components/QtyInput";
@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { addToCartAsync } from "../../store/slices/cartSlice";
 
 function ProductDetail() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true); // 新增 Loading 狀態
@@ -38,6 +39,11 @@ function ProductDetail() {
     { id: "delivery", label: "配送方式", engLabel: "Delivery" },
     { id: "faq", label: "常見問題", engLabel: "Q&A" },
   ];
+
+  const handleBuyNow = async () => {
+    await dispatch(addToCartAsync({ id: product.id, qty: quantity }));
+    navigate("/cart");
+  };
 
   if (isLoading) {
     return (
@@ -102,20 +108,22 @@ function ProductDetail() {
             <h2 className="productPrice text-primary mb-24 mb-xl-0">NT.{product.price}</h2>
             <div>
               <p className="cn-label-m mb-16 text-gray-800">規格</p>
-              <button
-                className={`btn-puff btn-puff-outline btn-puff-cn-m me-xl-12 mb-16 mb-xl-0 ${
-                  spec === "solo" ? "active" : ""
-                }`}
-                onClick={() => setSpec("solo")}
-              >
-                單顆·Solo
-              </button>
-              <button
-                className="btn-puff btn-puff-outline btn-puff-cn-m mb-16 mb-xl-0"
-                disabled
-              >
-                6入禮盒·Collection
-              </button>
+              <div className="d-flex flex-column flex-lg-row">
+                <button
+                  className={`btn-puff btn-puff-outline btn-puff-cn-m me-xl-12 mb-16 mb-xl-0 ${
+                    spec === "solo" ? "active" : ""
+                  }`}
+                  onClick={() => setSpec("solo")}
+                >
+                  單顆·Solo
+                </button>
+                <button
+                  className="btn-puff btn-puff-outline btn-puff-cn-m mb-16 mb-xl-0"
+                  disabled
+                >
+                  6入禮盒·Collection
+                </button>
+              </div>
             </div>
             <div>
               <p className="cn-label-m mb-16 text-gray-800">數量</p>
@@ -132,14 +140,12 @@ function ProductDetail() {
                 </button>
               </div>
             </div>
-            <NavLink to="/cart">
-              <button
-                className="w-100 eng-label-l btn-puff-outline btn-puff-eng-l btn-puff"
-                onClick={() => dispatch(addToCartAsync({ id: product.id, qty: quantity }))}
-              >
-                Buy It Now
-              </button>
-            </NavLink>
+            <button
+              className="w-100 eng-label-l btn-puff-outline btn-puff-eng-l btn-puff"
+              onClick={handleBuyNow}
+            >
+              Buy It Now
+            </button>
           </div>
         </div>
       </section>
