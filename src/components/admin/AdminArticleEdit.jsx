@@ -44,6 +44,50 @@ function AdminArticlesEdit({ tempArticle, setTempArticle, ClassicEditor, setIsEd
     }
   };
 
+  const handleInsertGrid = async (count) => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.multiple = true;
+    input.click();
+
+    input.onchange = async (e) => {
+      const files = Array.from(e.target.files).slice(0, count);
+      if (files.length === 0) return;
+
+      try {
+        const uploadPromises = files.map((file) => uploadImg(file));
+        const results = await Promise.all(uploadPromises);
+        const urls = results.map((res) => res.imageUrl);
+
+        // 改用 table 取代 div
+        const gridHtml = `
+  <table class="img-table" style="width:100%;border-collapse:collapse;">
+    <tr>
+      ${urls
+        .map(
+          (url) => `
+        <td style="padding:8px;border:none;width:${100 / count}%;">
+          <img src="${url}" style="width:100%;height:280px;object-fit:cover;display:block;"/>
+        </td>`,
+        )
+        .join("")}
+    </tr>
+  </table>
+`;
+
+        setTempArticle((prev) => ({
+          ...prev,
+          content: prev.content + gridHtml,
+        }));
+
+        SuccessToast.fire({ title: `已插入 ${urls.length} 張並排圖片` });
+      } catch {
+        ErrorToast.fire({ title: "圖片上傳失敗" });
+      }
+    };
+  };
+
   return (
     <>
       <div className="row">
@@ -145,6 +189,24 @@ function AdminArticlesEdit({ tempArticle, setTempArticle, ClassicEditor, setIsEd
           {/* CKEditor 內容區 */}
           <div className="mb-28 ck-editor-custom">
             <label className="form-label cn-label-m-regular text-primary">文章內容</label>
+            {/* 並排圖片按鈕 */}
+            <div className="mb-12 d-flex align-items-center gap-8">
+              <span className="cn-label-m text-gray-800">插入並排圖片：</span>
+              <button
+                type="button"
+                className="btn-puff btn-puff-outline btn-puff-cn-s"
+                onClick={() => handleInsertGrid(2)}
+              >
+                兩張並排
+              </button>
+              <button
+                type="button"
+                className="btn-puff btn-puff-outline btn-puff-cn-s"
+                onClick={() => handleInsertGrid(3)}
+              >
+                三張並排
+              </button>
+            </div>
             <CKEditor
               key={tempArticle.id || "new"}
               editor={ClassicEditor}

@@ -45,7 +45,7 @@ function Footer() {
                 <li className="nav-item">
                   <NavLink
                     className="nav-link p-0 eng-heading-h5 text-white"
-                    to="/Policy"
+                    to="/policy"
                   >
                     Policy
                   </NavLink>

@@ -11,8 +11,7 @@ function Header() {
   const [activeSection, setActiveSection] = useState("");
 
   const { scrollToAnchor } = useScroll();
-  const isTransparentPage = pathname === "/" || pathname === "/Products";
-
+  const isTransparentPage = pathname === "/" || pathname === "/Products" || pathname === "/About";
   const closeMenu = () => {
     const closeBtn = document.querySelector("#offcanvasNavbar .btn-close");
     if (closeBtn) closeBtn.click();

@@ -1,0 +1,39 @@
+.articles-img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  @media (max-width: 375px) {
+    height: 220px;
+  }
+}
+
+.swiper-slide {
+  height: auto !important;
+}
+
+.article-card {
+  height: 513px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  .readMore {
+    transition: color 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+
+    .readMore {
+      color: $secondary !important;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    height: 482px;
+  }
+}
+
+.section-articles {
+  background: linear-gradient(to bottom, transparent 0%, transparent 50%, $primary 50%, $primary 100%);
+}

@@ -1,0 +1,126 @@
+.article-content {
+  line-height: 2;
+  font-family: $font-noto-sans;
+  font-size: 18px;
+  font-weight: $fw-regular;
+  color: $gray-800;
+
+  figure.table {
+    background: transparent !important;
+    margin: 40px 0 !important;
+
+    tbody {
+      border-top: none !important;
+      border-color: transparent !important;
+    }
+
+    table {
+      border: none !important;
+      border-collapse: collapse !important;
+      background: transparent !important;
+      --bs-table-bg: transparent !important;
+
+      thead,
+      tbody,
+      tfoot,
+      tr,
+      td,
+      th {
+        border-color: transparent !important;
+      }
+
+      td {
+        border: none !important;
+        padding: 8px;
+        background: transparent !important;
+        --bs-table-bg: transparent !important;
+      }
+    }
+
+    figure.image {
+      margin: 0 !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  p {
+    margin-bottom: 28px;
+    line-height: 2;
+  }
+
+  h2 {
+    font-family: $font-noto-serif;
+    font-size: 28px;
+    font-weight: $fw-semibold;
+    letter-spacing: 2px;
+    color: $primary;
+    margin-top: 52px;
+    margin-bottom: 20px;
+
+    @media (max-width: 991px) {
+      font-size: 24px;
+    }
+  }
+
+  h3 {
+    font-family: $font-noto-serif;
+    font-size: 24px;
+    font-weight: $fw-semibold;
+    letter-spacing: 2px;
+    color: $primary;
+    margin-top: 40px;
+    margin-bottom: 16px;
+
+    @media (max-width: 991px) {
+      font-size: 20px;
+    }
+  }
+
+  strong {
+    font-weight: $fw-bold;
+    color: $secondary;
+  }
+
+  img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 480px;
+    object-fit: cover;
+    margin: 40px 0;
+    display: block;
+  }
+
+  figure {
+    margin: 40px 0;
+    width: 100% !important;
+
+    img {
+      margin: 0;
+    }
+
+    figcaption {
+      font-size: 14px;
+      font-weight: $fw-regular;
+      letter-spacing: 0.5px;
+      color: $gray-500;
+      text-align: center;
+      margin-top: 8px;
+    }
+  }
+
+  figure.image-style-align-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  blockquote {
+    border-left: 3px solid $secondary;
+    padding-left: 24px;
+    margin: 40px 0;
+    color: $gray-800;
+    font-style: italic;
+  }
+}

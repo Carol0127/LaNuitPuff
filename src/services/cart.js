@@ -1,5 +1,4 @@
-import { api } from "./api";
-const { VITE_API_PATH } = import.meta.env;
+import { api, VITE_API_PATH } from "./api";
 
 // 購物車資料
 export const getCart = async () => {

@@ -21,6 +21,9 @@ import AdminOrders from "./views/admin/AdminOrders";
 import AdminProducts from "./views/admin/AdminProducts";
 import AdminNews from "./views/admin/AdminNews";
 import AdminArticles from "./views/admin/AdminArticles";
+import About from "./views/frontend/About";
+import ArticleDetail from "./views/frontend/ArticleDetail";
+import Policy from "./views/frontend/Policy";
 
 export const router = createHashRouter([
   {
@@ -30,6 +33,14 @@ export const router = createHashRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "/articles/:id",
+        element: <ArticleDetail />,
       },
       {
         path: "products",
@@ -80,6 +91,10 @@ export const router = createHashRouter([
             element: <UserFavorite />,
           },
         ],
+      },
+      {
+        path: "policy",
+        element: <Policy />,
       },
     ],
   },
