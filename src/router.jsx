@@ -24,6 +24,7 @@ import AdminArticles from "./views/admin/AdminArticles";
 import About from "./views/frontend/About";
 import ArticleDetail from "./views/frontend/ArticleDetail";
 import Policy from "./views/frontend/Policy";
+import NotFound from "./views/NotFound";
 
 export const router = createHashRouter([
   {
@@ -95,6 +96,10 @@ export const router = createHashRouter([
       {
         path: "policy",
         element: <Policy />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
