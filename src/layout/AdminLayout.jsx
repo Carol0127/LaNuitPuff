@@ -15,7 +15,7 @@ function AdminLayout() {
       if (res && res.success) {
         setIsCheck(true);
       } else {
-        navigate("/admin-login");
+        navigate("/adminLogin");
       }
     };
     auth();
