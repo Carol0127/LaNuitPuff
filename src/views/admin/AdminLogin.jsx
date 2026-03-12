@@ -25,9 +25,6 @@ function AdminLogin() {
       const res = await login(data);
 
       if (res && res.success) {
-        const { token, expired } = res;
-        // eslint-disable-next-line react-hooks/immutability
-        document.cookie = `hexToken=${token}; expires=${new Date(expired)}; path=/`;
         SuccessToast.fire({
           title: "登入成功",
           text: "管理員您好，系統已就緒。",
