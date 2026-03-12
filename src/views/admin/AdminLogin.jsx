@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { login } from "../../services/admin";
 import { useNavigate } from "react-router";
@@ -44,6 +44,11 @@ function AdminLogin() {
       });
     }
   };
+
+  useEffect(() => {
+    const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, "$1");
+    if (token) navigate("/admin");
+  }, [navigate]);
 
   return (
     <>
