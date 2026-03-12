@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { login } from "../../services/admin";
 import { useNavigate } from "react-router";
@@ -7,13 +7,6 @@ import { ErrorToast, SuccessToast } from "../../components/Toast";
 function AdminLogin() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-
-  useEffect(() => {
-    const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, "$1");
-    if (token) {
-      navigate("/admin");
-    }
-  }, [navigate]);
 
   const {
     register,

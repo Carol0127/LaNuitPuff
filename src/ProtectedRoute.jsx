@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router";
+import { checkLogin } from "./services/admin";
+import AdminCheckLoading from "./components/admin/AdminCheckLoading";
 
 // 1. 使用者登入
 export const ProtectedRoute = ({ children }) => {
@@ -29,16 +32,22 @@ export const PublicRoute = ({ children }) => {
 // 3. 後臺登入
 export const ProtectedAdminRoute = ({ children }) => {
   const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, "$1");
+  const [status, setStatus] = useState(token ? "checking" : "fail");
 
-  // 如果沒有 token，踢回登入頁
-  if (!token) {
+  useEffect(() => {
+    if (!token) return;
+    checkLogin().then((res) => {
+      setStatus(res?.success ? "ok" : "fail");
+    });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (status === "checking") return <AdminCheckLoading />;
+  if (status === "fail")
     return (
       <Navigate
         to="/adminLogin"
         replace
       />
     );
-  }
-
   return children;
 };
