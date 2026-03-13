@@ -25,7 +25,6 @@ function ProductDetail() {
     getProductById(id).then((data) => {
       if (data) {
         setProduct(data);
-        // 2. 資料抓到了，但「故意」等 1.5 秒才讓 Loading 消失
         setTimeout(() => {
           setIsLoading(false);
         }, 1500);

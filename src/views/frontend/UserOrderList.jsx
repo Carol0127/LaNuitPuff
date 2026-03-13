@@ -59,6 +59,7 @@ function UserOrderList() {
                       <div style={{ flexShrink: 0 }}>
                         <img
                           src={productItem.product.imageUrl}
+                          alt="productItem.product.title"
                           className="orderListImg me-16 me-lg-32"
                         />
                       </div>
@@ -66,12 +67,12 @@ function UserOrderList() {
                       <div className="flex-grow-1">
                         <div className="row align-items-center">
                           {/* 商品名稱 */}
-                          <div className="col-12 col-lg-4">
+                          <div className="col-lg-4">
                             <p className="cn-body-s-bold text-primary mb-16 mb-lg-0">{productItem.product.title}</p>
                           </div>
 
                           {/* 規格、數量、單價 */}
-                          <div className="col-12 col-lg-5">
+                          <div className="col-lg-5">
                             <div className="d-lg-flex justify-content-start">
                               <p className="cn-label-m text-gray-800 mb-16 mb-lg-0 me-lg-40">單顆·Solo</p>
                               <p className="cn-label-m text-gray-800 mb-16 mb-lg-0 me-lg-40">數量 {productItem.qty}</p>
@@ -80,7 +81,7 @@ function UserOrderList() {
                           </div>
 
                           {/* 小計金額 */}
-                          <div className="col-12 col-lg-3 text-end">
+                          <div className="col-lg-3 text-end">
                             <p className="cn-body-l-regular text-primary mb-0 mt-12 mt-lg-0">NT.{productItem.total}</p>
                           </div>
                         </div>

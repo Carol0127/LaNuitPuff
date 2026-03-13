@@ -12,7 +12,7 @@
   z-index: 1050 !important;
 }
 
-@media (max-width: 768px) {
+@include media-breakpoint-down(md) {
   .checkout-section {
     padding-bottom: 140px !important;
   }

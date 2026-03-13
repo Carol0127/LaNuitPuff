@@ -49,7 +49,7 @@ function Login() {
         text: "帳號或密碼錯誤，請再試一次",
       });
     } finally {
-      setIsLoginLoading(false); // 結束載入
+      setIsLoginLoading(false);
     }
   };
 
@@ -93,7 +93,7 @@ function Login() {
                 </div>
                 <ul className="list-unstyled mt-48">
                   <li className="d-flex align-items-center mb-40">
-                    <span class="material-symbols-outlined me-16 align-bottom text-taupe-200 ">
+                    <span className="material-symbols-outlined me-16 align-bottom text-taupe-200 ">
                       confirmation_number
                     </span>
                     <div>
@@ -102,14 +102,14 @@ function Login() {
                     </div>
                   </li>
                   <li className="d-flex align-items-center mb-40">
-                    <span class="material-symbols-outlined me-16 align-bottom text-taupe-200 ">cake</span>
+                    <span className="material-symbols-outlined me-16 align-bottom text-taupe-200 ">cake</span>
                     <div>
                       <h3 className="eng-heading-italic-h5 text-taupe-200 mb-8">Birthday Surprise</h3>
                       <p className="cn-label-s text-taupe-200">生日當月贈送限定泡芙禮盒乙份</p>
                     </div>
                   </li>
                   <li className="d-flex align-items-center ">
-                    <span class="material-symbols-outlined me-16 align-bottom text-taupe-200 ">award_star</span>
+                    <span className="material-symbols-outlined me-16 align-bottom text-taupe-200 ">award_star</span>
                     <div>
                       <h3 className="eng-heading-italic-h5 text-taupe-200 mb-8">Points Reward</h3>
                       <p className="cn-label-s text-taupe-200">消費 1 元積 1 點，點數可兌換隱藏版口味</p>

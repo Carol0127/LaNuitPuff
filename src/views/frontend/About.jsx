@@ -106,7 +106,7 @@ function About() {
             <div className="col-lg-6">
               <img
                 src="https://github.com/Carol0127/LaNuitPuffProducts/blob/main/aboutPuff.png?raw=true"
-                alt=""
+                alt="抹茶泡芙"
                 className="mb-24 mb-lg-0 "
                 data-aos="fade-down"
               />

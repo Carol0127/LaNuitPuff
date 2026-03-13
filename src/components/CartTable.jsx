@@ -38,7 +38,7 @@ const CartTable = ({ cartData }) => {
             className="cart-item row g-0 py-24 px-16 border-bottom"
           >
             {/* 產品欄位 - 手機版 col-12 會自動換行 */}
-            <div className="col-12 col-lg-5 d-flex align-items-center mb-16 mb-lg-0">
+            <div className=" col-lg-5 d-flex align-items-center mb-16 mb-lg-0">
               <div className="product-img me-16">
                 <img
                   src={item.product.imageUrl}
@@ -53,7 +53,7 @@ const CartTable = ({ cartData }) => {
             </div>
 
             {/* 規格 */}
-            <div className="col-12 col-lg-2 d-flex justify-content-between justify-content-lgnter align-items-center mb-16  mb-lg-0">
+            <div className=" col-lg-2 d-flex justify-content-between justify-content-lgnter align-items-center mb-16  mb-lg-0">
               <span className="d-lg-none cn-body-s-regular text-gray-500">規格</span>
               <select className="form-select cn-body-m-regular text-primary w-auto">
                 <option value="solo">單顆·Solo</option>
@@ -67,16 +67,18 @@ const CartTable = ({ cartData }) => {
             </div>
 
             {/* 數量 */}
-            <div className="col-12 col-lg-2 d-flex justify-content-between justify-content-lg-center align-items-center mb-16  mb-lg-0">
+            <div className=" col-lg-2 d-flex justify-content-between justify-content-lg-center align-items-center mb-16  mb-lg-0">
               <span className="d-lg-none cn-body-s-regular text-gray-500">數量</span>
               <div className="qty-control d-flex align-items-center">
                 <button
                   className="btn border-0 p-8"
                   onClick={() => handleUpdateQty(item, item.qty - 1)}
-                  disabled={updatingId === item.id} // 鎖住按鈕
+                  disabled={updatingId === item.id}
                 >
                   <span
-                    className={`material-symbols-outlined align-bottom text-primary ${updatingId === item.id ? "opacity-25" : ""}`}
+                    className={`material-symbols-outlined align-bottom text-primary ${
+                      updatingId === item.id ? "opacity-25" : ""
+                    }`}
                   >
                     remove
                   </span>
@@ -99,10 +101,12 @@ const CartTable = ({ cartData }) => {
                 <button
                   className="btn border-0 p-8"
                   onClick={() => handleUpdateQty(item, item.qty + 1)}
-                  disabled={updatingId === item.id} // 鎖住按鈕
+                  disabled={updatingId === item.id}
                 >
                   <span
-                    className={`material-symbols-outlined align-bottom text-primary ${updatingId === item.id ? "opacity-25" : ""}`}
+                    className={`material-symbols-outlined align-bottom text-primary ${
+                      updatingId === item.id ? "opacity-25" : ""
+                    }`}
                   >
                     add
                   </span>
@@ -111,13 +115,13 @@ const CartTable = ({ cartData }) => {
             </div>
 
             {/* 小計 */}
-            <div className="col-12 col-lg-2 d-flex justify-content-between justify-content-lg-end align-items-center mb-16 mb-lg-0">
+            <div className=" col-lg-2 d-flex justify-content-between justify-content-lg-end align-items-center mb-16 mb-lg-0">
               <span className="d-lg-none cn-body-s-regular text-gray-500">小計</span>
               <span className="cn-body-m-regular text-primary">NT.{item.total}</span>
             </div>
 
             {/* 刪除按鈕 */}
-            <div className="col-12 col-lg-1 d-flex justify-content-end align-items-center  mb-lg-0 text-end">
+            <div className=" col-lg-1 d-flex justify-content-end align-items-center  mb-lg-0 text-end">
               <button className="btn btn-delete p-0">
                 <span
                   className="material-symbols-outlined align-bottom text-primary"

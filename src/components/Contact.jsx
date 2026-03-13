@@ -29,7 +29,12 @@ function Contact() {
             </li>
             <li className="d-flex flex-column align-items-center flex-lg-row mb-24 mb-lg-8">
               <p className="text-nowrap mb-4 me-lg-3">門市電話</p>
-              <p className="cn-body-m-regular">02-2222-222</p>
+              <a
+                href="tel:0222222222"
+                className="cn-body-m-regular text-gray-800 text-decoration-none"
+              >
+                02-2222-222
+              </a>
             </li>
             <li className="d-flex flex-column align-items-center flex-lg-row">
               <p className="text-nowrap mb-4 me-lg-3">營業時間</p>

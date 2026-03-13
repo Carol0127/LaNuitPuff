@@ -5,7 +5,7 @@
   gap: 16px;
   overflow: hidden;
 
-  @media (min-width: 1024px) {
+  @include media-breakpoint-up(lg) {
     flex-direction: row;
     height: 500px;
   }
@@ -15,7 +15,7 @@
     height: 420px;
     order: 1;
 
-    @media (min-width: 1024px) {
+    @include media-breakpoint-up(lg) {
       width: 100%;
       height: 500px;
       order: 2;
@@ -33,7 +33,7 @@
     height: 110px;
     order: 2;
 
-    @media (min-width: 1024px) {
+    @include media-breakpoint-up(lg) {
       width: 110px !important;
       height: 500px;
       order: 1;
@@ -41,13 +41,12 @@
     }
 
     .swiper-slide {
-      // 手機版：這裡一定要設寬度，Swiper 才會正確計算 slidesPerView: "auto"
       width: 90px;
       height: 110px;
       opacity: 0.4;
       cursor: pointer;
 
-      @media (min-width: 1024px) {
+      @include media-breakpoint-up(lg) {
         width: 110px !important;
         height: 110px !important;
       }

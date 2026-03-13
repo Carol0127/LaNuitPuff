@@ -47,7 +47,6 @@ function AdminNews() {
   useEffect(() => {
     let isMounted = true;
 
-    // 定義一個內部的 async 函式來執行，這能避開 ESLint 對直接 setState 的敏感度
     const loadData = async () => {
       if (!isMounted) return;
       await fetchArticles(currentPage);

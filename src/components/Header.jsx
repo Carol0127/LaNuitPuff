@@ -41,11 +41,11 @@ function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // 初始化執行
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      setActiveSection(""); // 在這裡清空就不會觸發同步渲染報錯
+      setActiveSection("");
     };
   }, [pathname]);
 
@@ -105,7 +105,7 @@ function Header() {
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasNavbar"
             >
-              <span class="material-symbols-outlined">dehaze</span>
+              <span className="material-symbols-outlined">dehaze</span>
             </button>
           </div>
 

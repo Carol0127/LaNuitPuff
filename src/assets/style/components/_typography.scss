@@ -30,28 +30,28 @@ $fw-regular: 400;
 
   &-xl {
     font-size: 64px;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 52px;
-    } // XL -> L
+    }
   }
   &-l {
     font-size: 52px;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 48px;
-    } // L -> M
+    }
   }
   &-m {
     font-size: 48px;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 40px;
-    } // M -> S
+    }
   }
   &-s {
     font-size: 40px;
     font-weight: $fw-medium;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 32px;
-    } // S -> h2
+    }
   }
 }
 
@@ -60,41 +60,41 @@ $fw-regular: 400;
     font-size: 36px;
     font-weight: $fw-bold;
     letter-spacing: 4px;
-    @media (max-width: 991px) {
+    @include media-breakpoint-down(lg) {
       font-size: 32px;
-    } // h1 -> h2
+    }
   }
   &-h2 {
     font-size: 32px;
     font-weight: $fw-bold;
     letter-spacing: 2px;
-    @media (max-width: 991px) {
+    @include media-breakpoint-down(lg) {
       font-size: 28px;
-    } // h2 -> h3
+    }
   }
   &-h3 {
     font-size: 28px;
     font-weight: $fw-semibold;
     letter-spacing: 2px;
-    @media (max-width: 991px) {
+    @include media-breakpoint-down(lg) {
       font-size: 24px;
-    } // h3 -> h4
+    }
   }
   &-h4 {
     font-size: 24px;
     font-weight: $fw-semibold;
     letter-spacing: 2px;
-    @media (max-width: 991px) {
+    @include media-breakpoint-down(lg) {
       font-size: 20px;
-    } // h4 -> h5
+    }
   }
   &-h5 {
     font-size: 20px;
     font-weight: $fw-medium;
     letter-spacing: 2px;
-    @media (max-width: 991px) {
+    @include media-breakpoint-down(lg) {
       font-size: 18px;
-    } // h5 -> h6
+    }
   }
 }
 
@@ -103,55 +103,51 @@ $fw-regular: 400;
   line-height: 1.4;
   letter-spacing: 0.5px;
 
-  // --- XL 系列 (桌機 24px -> 手機 20px) ---
   &-xl-bold {
     font-size: 24px;
     font-weight: $fw-bold;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 20px;
     }
   }
   &-xl-regular {
     font-size: 24px;
     font-weight: $fw-regular;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 20px;
     }
   }
 
-  // --- L 系列 (桌機 20px -> 手機 18px) ---
   &-l-bold {
     font-size: 20px;
     font-weight: $fw-bold;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 18px;
     }
   }
   &-l-regular {
     font-size: 20px;
     font-weight: $fw-regular;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 18px;
     }
   }
 
-  // --- M 系列 (桌機 18px -> 手機 16px) ---
   &-m-bold {
     font-size: 18px;
     font-weight: $fw-bold;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 16px;
     }
   }
   &-m-regular {
     font-size: 18px;
     font-weight: $fw-regular;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 16px;
     }
   }
 
-  // --- S 系列 (16px) ---
   &-s-bold {
     font-size: 16px;
     font-weight: $fw-bold;
@@ -164,24 +160,22 @@ $fw-regular: 400;
 
 .cn-label {
   font-family: $font-noto-sans;
+
   &-l {
     font-size: 18px;
     font-weight: 400;
     letter-spacing: 1.5px;
     line-height: 1.4;
-
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 16px;
     }
   }
-
   &-m {
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 0.5px;
     line-height: 1.4;
-
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 14px;
     }
   }
@@ -192,8 +186,9 @@ $fw-regular: 400;
     line-height: 1.4;
   }
 }
+
 /* ==========================================================================
-   English Typography (Corrected Nesting)
+   English Typography
    ========================================================================== */
 
 [class*="eng-heading-"],
@@ -210,34 +205,31 @@ $fw-regular: 400;
   &-xl {
     font-size: 64px;
     font-weight: 700;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-weight: 400;
-      font-size: 48px; // XL -> M (連跳兩級)
+      font-size: 48px;
     }
   }
-
   &-l {
     font-size: 52px;
     font-weight: 700;
-    @media (max-width: 768px) {
-      font-size: 40px; // L -> S (連跳兩級)
+    @include media-breakpoint-down(md) {
+      font-size: 40px;
     }
   }
-
   &-m {
     font-size: 48px;
     font-weight: 400;
-    @media (max-width: 768px) {
-      font-size: 36px; // M -> h1 (連跳兩級)
+    @include media-breakpoint-down(md) {
+      font-size: 36px;
     }
   }
-
   &-s {
     font-size: 40px;
     font-weight: 400;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-weight: $fw-bold;
-      font-size: 32px; // S -> h2 (連跳兩級)
+      font-size: 32px;
     }
   }
 }
@@ -248,46 +240,44 @@ $fw-regular: 400;
   &-h1 {
     font-size: 36px;
     font-weight: $fw-bold;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 28px;
-    } // h1 -> h3 (連跳兩級)
+    }
   }
   &-h2 {
     font-size: 32px;
     font-weight: $fw-bold;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 24px;
-    } // h2 -> h4 (連跳兩級)
+    }
   }
   &-h3 {
     font-size: 28px;
     font-weight: $fw-bold;
-
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 20px;
-    } // h3 -> h5
+    }
   }
   &-h4 {
     font-size: 24px;
     font-weight: $fw-bold;
-
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 18px;
-    } // h4 -> h6
+    }
   }
   &-h5 {
     font-size: 20px;
     font-weight: 400;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 18px;
-    } // h5 -> Small
+    }
   }
   &-h6 {
     font-size: 16px;
     font-weight: 400;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 14px;
-    } // h6 -> XS
+    }
   }
 }
 
@@ -299,16 +289,15 @@ $fw-regular: 400;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.5px;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 16px;
     }
   }
-
   &-m {
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 0.5px;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 14px;
     }
   }
@@ -324,39 +313,39 @@ $fw-regular: 400;
     font-size: 36px;
     font-weight: $fw-bold;
     letter-spacing: 4px;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 28px;
-    } // h1 -> h3 (連跳兩級)
+    }
   }
   &-h2 {
     font-size: 32px;
     font-weight: $fw-bold;
     letter-spacing: 2px;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 24px;
-    } // h2 -> h4 (連跳兩級)
+    }
   }
   &-h3 {
     font-size: 28px;
     font-weight: $fw-bold;
     letter-spacing: 2px;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 20px;
-    } // h3 -> h5
+    }
   }
   &-h4 {
     font-size: 24px;
     font-weight: $fw-bold;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 18px;
-    } // h4 -> h6
+    }
   }
   &-h5 {
     font-size: 20px;
     font-weight: 400;
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       font-size: 18px;
-    } // h5 -> Small
+    }
   }
   &-h6 {
     font-size: 16px;

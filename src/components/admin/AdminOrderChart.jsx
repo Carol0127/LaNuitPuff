@@ -37,15 +37,7 @@ function AdminOrderChart({ orders = [] }) {
 
   const totalDisplay = data.reduce((a, b) => a + b, 0);
 
-  // --- 3. 視覺配色 (使用妳提供的品牌規範色號) ---
-  const laNuitPalette = [
-    "#011242", // Primary 600
-    "#011549", // Primary 500
-    "#5C6FA3", // Primary 400
-    "#9AA9CC", // Primary 300
-    "#C9D1E3", // Primary 200
-    "#E5E5E5", // Neutral 200
-  ];
+  const laNuitPalette = ["#011242", "#011549", "#5C6FA3", "#9AA9CC", "#C9D1E3", "#E5E5E5"];
 
   const chartData = {
     labels: labels,

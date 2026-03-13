@@ -77,7 +77,7 @@ function Checkout() {
       const payRes = await payOrder(orderId);
       if (payRes.success) {
         reset();
-        navigate(`/checkout-success/${orderId}`); // 跳轉
+        navigate(`/checkout-success/${orderId}`);
       } else {
         Swal.fire("訂單已成立但付款失敗", payRes.message, "warning");
       }
@@ -349,7 +349,7 @@ function Checkout() {
                         {...register("paymentMethod", { required: "請選擇付款方式" })}
                         className="form-check-input"
                         type="radio"
-                        value="cod" // Cash on Delivery
+                        value="cod"
                         id="payCOD"
                       />
                       <label

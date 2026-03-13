@@ -37,15 +37,13 @@ function ProductDetailSwiper({ product }) {
         slideToClickedSlide={true}
         breakpoints={{
           1024: {
-            // 1024px 以上：垂直模式
             direction: "vertical",
             slidesPerView: 4,
             spaceBetween: 20,
           },
           0: {
-            // 1024px 以下：水平滑動模式
             direction: "horizontal",
-            slidesPerView: "auto", // 配合 CSS 寬度實現流暢滑動
+            slidesPerView: "auto",
             spaceBetween: 12,
             centeredSlides: false,
           },

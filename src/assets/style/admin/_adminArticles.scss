@@ -1,7 +1,7 @@
 .articlesImg {
   width: 159px;
   height: 179px;
-  @media (max-width: 768px) {
+  @include media-breakpoint-down(md) {
     width: 100%;
     height: 120px;
   }
@@ -15,14 +15,12 @@
   overflow: hidden;
 }
 
-/* 在妳的 index.scss 或 AdminArticles.scss 加入 */
 .ck-editor__editable_inline {
-  min-height: 400px; /* 確保有高度 */
-  border: 1px solid #ccced1 !important; /* 確保邊框看得見 */
+  min-height: 400px;
+  border: 1px solid #ccced1 !important;
   background-color: white;
 }
 
-/* 針對妳提到的銳角美學，移除圓角 */
 .ck.ck-editor__main > .ck-editor__editable {
   border-radius: 0 !important;
 }
@@ -30,16 +28,14 @@
   border-radius: 0 !important;
 }
 
-/* 針對編輯器內部的文字行高進行調整 */
 .ck-content {
-  line-height: 1.8 !important; /* 建議設在 1.6 ~ 1.8 之間，長文讀起來最舒服 */
-  letter-spacing: 0.05em; /* 稍微增加字距，更有精品設計感 */
+  line-height: 1.8 !important;
+  letter-spacing: 0.05em;
 }
 
-/* 確保編輯器有足夠的高度，不會因為內容多就擠在一起 */
 .ck-editor__editable_inline {
   min-height: 400px;
-  padding: 20px 40px !important; /* 增加左右留白，模擬雜誌排版感 */
+  padding: 20px 40px !important;
 }
 
 .ck-content h2,
@@ -47,5 +43,5 @@
   margin-top: 2.5rem !important;
   margin-bottom: 1rem !important;
   font-weight: 600;
-  color: #1a1a1a; /* 妳的 Primary 顏色 */
+  color: #1a1a1a;
 }

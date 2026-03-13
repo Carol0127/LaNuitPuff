@@ -59,7 +59,7 @@ function PuffFeatures() {
           <div className="col-lg-5 mb-32 mb-lg-0 p-0 px-lg-12">
             <img
               src="https://github.com/Carol0127/LaNuitPuffProducts/blob/main/%E6%88%90%E7%86%9F%E8%8B%A6%E7%94%9C%E7%B3%BB/%E5%A8%81%E5%A3%AB%E5%BF%8C%E7%84%A6%E7%B3%96%E6%B3%A1%E8%8A%99/lanuit-1768122185329.jpg?raw=true"
-              alt=""
+              alt="PuffFeatures"
               className="puffSpecial img-fluid"
             />
           </div>

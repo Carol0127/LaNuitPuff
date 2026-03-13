@@ -23,14 +23,12 @@
       cursor: pointer;
       transition: all 0.2s ease-in-out;
 
-      // 4. 電腦版置中修正
-      @media (min-width: 992px) {
+      @include media-breakpoint-up(lg) {
         width: auto;
         text-align: center;
-        text-align-last: center; // 確保選中的文字也置中
+        text-align-last: center;
       }
 
-      // 5. 互動狀態
       &:hover {
         border-color: $primary !important;
       }

@@ -3,7 +3,7 @@
   height: 100px;
   object-fit: cover;
 
-  @media (max-width: 768px) {
+  @include media-breakpoint-down(md) {
     height: 158px;
   }
 }

@@ -63,7 +63,7 @@
   text-align: center;
   opacity: 0.2;
   pointer-events: none;
-  @media (max-width: 768px) {
+  @include media-breakpoint-down(md) {
     display: none;
   }
 }

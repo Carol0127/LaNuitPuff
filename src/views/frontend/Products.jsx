@@ -5,7 +5,6 @@ import ProductSort from "../../components/ProductsSort";
 import PopularCardSwiper from "../../components/PopularCardSwiper";
 import PuffSeriesSwiper from "../../components/PuffSeriesSwiper";
 import { useNavigate } from "react-router";
-// import { handleAddToCart } from "../../hooks/handleAddToCart";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsAsync, sortProducts } from "../../store/slices/productSlice";
 import { addToCartAsync } from "../../store/slices/cartSlice";

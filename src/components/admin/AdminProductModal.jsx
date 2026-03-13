@@ -201,6 +201,7 @@ function AdminProductModal({
                               {url && (
                                 <img
                                   src={url}
+                                  alt={`商品圖片預覽 ${index + 1}`}
                                   className="img-fluid"
                                   style={{ maxHeight: "100px" }}
                                 />

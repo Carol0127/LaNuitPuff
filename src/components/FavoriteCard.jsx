@@ -23,7 +23,6 @@ function FavoriteCard() {
   };
 
   const handleToggleFavorite = (id) => {
-    // 濾掉被點擊的 ID
     setFavoriteCard((prev) => prev.filter((item) => item.id !== id));
   };
   return (
@@ -74,7 +73,6 @@ function FavoriteCard() {
                     <p className="eng-heading-h5 text-taupe-200 mb-12 mb-lg-0">NT.{item.price}</p>
                   </div>
                 </div>
-                {/* 這部分建議改為動態，若無英文名可先帶入 item.title 或固定 placeholder */}
                 <p className="eng-label-m text-taupe-200 mb-0">Silence at 3 AM</p>
               </div>
             </div>

@@ -19,7 +19,7 @@
     transform: none !important;
     display: flex;
 
-    @media (max-width: 768px) {
+    @include media-breakpoint-down(md) {
       right: 50% !important;
       transform: translateX(50%) !important;
       bottom: 20px !important;

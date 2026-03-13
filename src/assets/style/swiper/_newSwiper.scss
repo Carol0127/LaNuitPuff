@@ -12,7 +12,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@include media-breakpoint-down(md) {
   .newSwiper {
     height: auto !important;
   }
@@ -36,7 +36,7 @@
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  @media (max-width: 768px) {
+  @include media-breakpoint-down(md) {
     max-width: 768px;
     min-height: 250px;
   }

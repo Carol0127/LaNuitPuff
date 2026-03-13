@@ -146,7 +146,7 @@ function AdminArticles() {
               </div>
               {articles.map((item) => (
                 <div
-                  className="col-12 col-lg-6 mb-24"
+                  className="col-lg-6 mb-24"
                   key={item.id}
                 >
                   <div className="px-16 py-24 bg-white border d-lg-flex align-items-center h-100">

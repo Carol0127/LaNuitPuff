@@ -117,13 +117,13 @@
 }
 .btn-puff-cn-m {
   padding: 12px 20px;
-  @media (max-width: 768px) {
+  @include media-breakpoint-down(md) {
     padding: 16px 8px;
   }
 }
 .btn-puff-cn-l {
   padding: 16px 24px;
-  @media (max-width: 768px) {
+  @include media-breakpoint-down(md) {
     padding: 12px 20px;
   }
 }
@@ -133,13 +133,13 @@
 }
 .btn-puff-eng-m {
   padding: 8px 24px;
-  @media (max-width: 768px) {
+  @include media-breakpoint-down(md) {
     padding: 8px 24px;
   }
 }
 .btn-puff-eng-l {
   padding: 16px 40px;
-  @media (max-width: 768px) {
+  @include media-breakpoint-down(md) {
     padding: 16px 40px;
   }
 }
@@ -154,7 +154,7 @@
     background-color: $secondary;
     color: $taupe-100;
   }
-  @media (max-width: 768px) {
+  @include media-breakpoint-down(md) {
     width: 20px;
     height: 20px;
     span {

@@ -60,15 +60,14 @@ function AdminArticlesEdit({ tempArticle, setTempArticle, ClassicEditor, setIsEd
         const results = await Promise.all(uploadPromises);
         const urls = results.map((res) => res.imageUrl);
 
-        // 改用 table 取代 div
         const gridHtml = `
-  <table class="img-table" style="width:100%;border-collapse:collapse;">
+  <table className="img-table" style="width:100%;border-collapse:collapse;">
     <tr>
       ${urls
         .map(
           (url) => `
         <td style="padding:8px;border:none;width:${100 / count}%;">
-          <img src="${url}" style="width:100%;height:280px;object-fit:cover;display:block;"/>
+          <img src="${url}" alt="" style="width:100%;height:280px;object-fit:cover;display:block;"/>
         </td>`,
         )
         .join("")}
@@ -133,7 +132,7 @@ function AdminArticlesEdit({ tempArticle, setTempArticle, ClassicEditor, setIsEd
             {tempArticle.image && (
               <img
                 src={tempArticle.image}
-                alt="預覽"
+                alt={tempArticle.title ? `${tempArticle.title} 主視覺圖` : "文章主視覺圖預覽"}
                 className="mt-12 border object-fit-cover"
                 style={{ width: "160px", height: "100px" }}
               />

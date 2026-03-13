@@ -10,14 +10,14 @@ function AdminHeader() {
       title: "確定要登出嗎？",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#4A3B31", // 妳指定的 Primary 深色
+      confirmButtonColor: "#4A3B31",
       cancelButtonColor: "#9E9E9E",
       confirmButtonText: "是的，登出",
       cancelButtonText: "先不要",
       customClass: {
         title: "cn-heading-h4",
         htmlContainer: "cn-body-m-regular",
-        confirmButton: "btn-puff-primary", // 確保妳的 CSS 有這個 class
+        confirmButton: "btn-puff-primary",
       },
     }).then((result) => {
       if (result.isConfirmed) {

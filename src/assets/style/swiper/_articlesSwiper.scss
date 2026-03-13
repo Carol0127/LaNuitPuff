@@ -28,7 +28,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@include media-breakpoint-down(md) {
   .article-card {
     height: 482px;
   }

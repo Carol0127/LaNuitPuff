@@ -20,7 +20,7 @@ export const SuccessToast = Swal.mixin({
   ...baseOptions,
   icon: "success",
   iconColor: "#2E8B68", // Success 500
-  background: "#EAF7F1", // 淺色背景：Success 100
+  background: "#EAF7F1", // Success 100
   color: "#002B1B",
   customClass: {
     popup: "lanuit-toast-flat lanuit-toast-success",

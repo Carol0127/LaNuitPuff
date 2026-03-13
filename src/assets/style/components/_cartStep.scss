@@ -4,19 +4,15 @@
 }
 
 .step-circle {
-  // 基礎形狀與大小
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background-color: #a3afcf; // 預設未到達的顏色
-
-  // 置中數字內容
+  background-color: #a3afcf;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0; // 防止圓圈變形
+  flex-shrink: 0;
 
-  // 數字樣式
   .step-circle-text {
     font-family: $font-eng-serif !important;
     font-size: 20px;
@@ -55,8 +51,7 @@
   }
 }
 
-/* --- 手機版 RWD --- */
-@media (max-width: 1024px) {
+@include media-breakpoint-down(xl) {
   .step-node {
     flex-direction: column;
     text-align: center;

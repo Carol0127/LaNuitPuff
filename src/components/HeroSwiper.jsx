@@ -10,7 +10,7 @@ function HeroSwiper() {
       <Swiper
         pagination={{ clickable: true }}
         modules={[Pagination, Autoplay, EffectFade]}
-        effect="fade" // 開啟淡入淡出特效
+        effect="fade"
         speed={800}
         className="HeroSwiper"
         autoplay={{ delay: 3000, disableOnInteraction: false }}

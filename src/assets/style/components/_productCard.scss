@@ -3,7 +3,7 @@
   img {
     height: 270px;
     object-fit: cover;
-    @media (max-width: 576px) {
+    @include media-breakpoint-down(sm) {
       height: 200px;
     }
   }
@@ -48,7 +48,7 @@
   img {
     height: 270px;
     object-fit: cover;
-    @media (max-width: 576px) {
+    @include media-breakpoint-down(sm) {
       height: 164px;
     }
   }
