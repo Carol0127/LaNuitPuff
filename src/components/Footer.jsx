@@ -17,10 +17,10 @@ function Footer() {
                   className="mb-20"
                 />
               </NavLink>
-              <ul className="navbar-nav flex-row flex-wrap">
+              <ul className="navbar-nav navbar-dark flex-row flex-wrap">
                 <li className="nav-item me-16">
                   <NavLink
-                    className="nav-link p-0 eng-heading-h5 text-white"
+                    className="nav-link p-0 eng-heading-h5 "
                     to="/"
                   >
                     Home
@@ -28,7 +28,7 @@ function Footer() {
                 </li>
                 <li className="nav-item me-16">
                   <NavLink
-                    className="nav-link p-0 eng-heading-h5 text-white"
+                    className="nav-link p-0 eng-heading-h5 "
                     to="/products"
                   >
                     Product
@@ -36,7 +36,7 @@ function Footer() {
                 </li>
                 <li className="nav-item me-16">
                   <button
-                    className="nav-link p-0 eng-heading-h5 text-white bg-transparent border-0"
+                    className="nav-link p-0 eng-heading-h5  bg-transparent border-0"
                     onClick={() => scrollToAnchor("contact")}
                   >
                     Contact
@@ -44,7 +44,7 @@ function Footer() {
                 </li>
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link p-0 eng-heading-h5 text-white"
+                    className="nav-link p-0 eng-heading-h5 "
                     to="/policy"
                   >
                     Policy
@@ -70,16 +70,26 @@ function Footer() {
             <p className="text-blue-300 eng-label-m m-0">2026 © Copyright By La Nuit Puff. All Rights Reserved.</p>
             <ul className="navbar-nav justify-content-center flex-row">
               <li className="nav-item me-16">
-                <i
-                  className="bi bi-facebook text-blue-300"
-                  style={{ fontSize: "24px" }}
-                ></i>
+                <a
+                  className="footer-icon"
+                  href="#"
+                >
+                  <i
+                    className="bi bi-facebook text-blue-300"
+                    style={{ fontSize: "24px" }}
+                  ></i>
+                </a>
               </li>
               <li>
-                <i
-                  className="bi bi-instagram text-blue-300"
-                  style={{ fontSize: "24px" }}
-                ></i>
+                <a
+                  href="#"
+                  className="footer-icon"
+                >
+                  <i
+                    className="bi bi-instagram text-blue-300"
+                    style={{ fontSize: "24px" }}
+                  ></i>
+                </a>
               </li>
             </ul>
           </div>

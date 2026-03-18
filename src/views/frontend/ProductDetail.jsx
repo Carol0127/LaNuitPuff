@@ -126,7 +126,7 @@ function ProductDetail() {
             </div>
             <div>
               <p className="cn-label-m mb-16 text-gray-800">數量</p>
-              <div className="d-flex flex-column flex-lg-row align-items-center mb-16">
+              <div className="d-flex flex-column flex-lg-row align-items-center ">
                 <QtyInput
                   value={quantity}
                   onChange={setQuantity}

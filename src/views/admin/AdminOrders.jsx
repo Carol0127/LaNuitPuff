@@ -131,10 +131,10 @@ function AdminOrders() {
 
   const shouldShowNavigation = useMemo(() => {
     if (pagination.total_pages <= 1) return false;
+    if (currentTab !== "全部") return false;
     if (filteredOrders.length === 0) return false;
-
     return true;
-  }, [pagination.total_pages, filteredOrders.length]);
+  }, [pagination.total_pages, filteredOrders.length, currentTab]);
 
   return (
     <>
@@ -180,7 +180,10 @@ function AdminOrders() {
                         currentTab === tab ? "active" : ""
                       }`}
                       type="button"
-                      onClick={() => setCurrentTab(tab)}
+                      onClick={() => {
+                        setCurrentTab(tab);
+                        setCurrentPage(1);
+                      }}
                     >
                       {tab}
                     </button>

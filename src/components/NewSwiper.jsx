@@ -4,7 +4,7 @@ import { Navigation, EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
-import { getArticles } from "../services/admin";
+import { getArticles } from "../services/articles";
 function NewSwiper() {
   const [news, setNews] = useState([]);
   const swiperRef = useRef(null);
@@ -12,7 +12,8 @@ function NewSwiper() {
     const fetchNews = async () => {
       try {
         const res = await getArticles();
-        const filteredNews = res.articles.filter((item) => item.category === "最新消息");
+        const filteredNews = res.filter((item) => item.category === "最新消息");
+
         setNews(filteredNews);
       } catch (error) {
         console.error("Swiper 取得消息失敗:", error);
