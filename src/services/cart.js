@@ -6,7 +6,7 @@ export const getCart = async () => {
     const res = await api.get(`/api/${VITE_API_PATH}/cart`);
     return res.data;
   } catch (error) {
-    console.log(error);
+    return error.response?.data;
   }
 };
 

@@ -1,14 +1,3 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-img {
-  vertical-align: middle;
-}
-
-/* 標籤的基本樣式 */
 body {
   font-family: "Noto Sans TC", sans-serif;
   line-height: 1.2;
@@ -16,13 +5,7 @@ body {
   color: #141a1f;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
 a {
-  display: inline-block;
   text-decoration: none;
   color: inherit;
 }
@@ -32,15 +15,11 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-  margin-bottom: 0;
-}
-
+h6,
 p {
   margin-bottom: 0;
 }
 
-/* style.css */
 .layout-container {
   display: grid;
   grid-template-rows: auto 1fr auto;

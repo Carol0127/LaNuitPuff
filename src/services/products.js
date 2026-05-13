@@ -9,7 +9,7 @@ export const getPopularProducts = async () => {
     const shuffled = [...allProducts].sort(() => Math.random() - 0.5);
     return shuffled.slice(0, 4);
   } catch (error) {
-    console.log(error);
+    return error.response?.data;
   }
 };
 
@@ -21,7 +21,7 @@ export const getProducts = async (page = 1, category = "") => {
     });
     return res.data;
   } catch (error) {
-    console.log(error);
+    return error.response?.data;
   }
 };
 
@@ -43,6 +43,6 @@ export const getFavoriteProducts = async () => {
     const shuffled = [...allProducts].sort(() => Math.random() - 0.5);
     return shuffled.slice(0, 6);
   } catch (error) {
-    console.log(error);
+    return error.response?.data;
   }
 };
